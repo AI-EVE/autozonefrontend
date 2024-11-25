@@ -36,8 +36,8 @@ const Page = () => {
     mode: "onChange",
     resolver: zodResolver(LoginFormSchema),
     defaultValues: {
-      username: "admin",
-      password: "012015ssSS!",
+      username: "",
+      password: "",
     },
   });
 
@@ -48,6 +48,7 @@ const Page = () => {
       await loginUser(values);
 
       toast({
+        className: "bg-green-700",
         title: "Welcome back.",
         description: (
           <SuccessToastDescription message="Glad to see you again." />
