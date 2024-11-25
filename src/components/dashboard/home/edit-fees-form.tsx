@@ -137,7 +137,6 @@ const EditFeesForm = ({
         ),
       });
     } catch (error: any) {
-      console.log(error);
       toast({
         variant: "destructive",
         title: "Something went wrong while updating the service fee data.",

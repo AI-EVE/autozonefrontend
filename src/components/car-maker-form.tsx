@@ -119,7 +119,6 @@ const CarkMakerForm = ({
       });
       setIsOpen(false);
     } catch (error: any) {
-      console.log(error.message);
       toast({
         variant: "destructive",
         title: "Error",

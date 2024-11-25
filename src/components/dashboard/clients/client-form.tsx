@@ -149,7 +149,6 @@ const ClientForm = ({
 
       // handleClose();
     } catch (error: any) {
-      console.log(error);
       // form.reset();
       toast({
         variant: "destructive",

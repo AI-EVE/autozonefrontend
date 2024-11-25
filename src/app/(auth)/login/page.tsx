@@ -55,7 +55,6 @@ const Page = () => {
         ),
       });
     } catch (error: any) {
-      console.log(error.message, "ERROR");
       toast({
         variant: "destructive",
         title: "Uh oh! Something went wrong.",

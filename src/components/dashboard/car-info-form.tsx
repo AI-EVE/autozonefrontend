@@ -92,7 +92,6 @@ export const CarInfoForm: React.FC<CarInfoFormProps> = ({
         ),
       });
     } catch (error: any) {
-      console.log(error);
       toast({
         variant: "destructive",
         title: "Something went wrong while creating a new car information.",

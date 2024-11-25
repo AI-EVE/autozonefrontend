@@ -24,7 +24,6 @@ import SuccessToastDescription, {
   ErorrToastDescription,
 } from "@components/toast-items";
 
-
 import { createCarModelAction } from "@lib/actions/carModelsActions";
 import { MakerCombobox } from "./maker-combobox";
 import useObjectCompare from "@hooks/use-compare-objs";
@@ -55,8 +54,8 @@ const CarModelForm = ({ carMakers }: { carMakers: CarMaker[] }) => {
   async function onSubmit(carModel: z.infer<typeof CreateCarModelSchema>) {
     try {
       if (isEqual) throw new Error("Data hasn't changed.");
-    const {error} =  await createCarModelAction(carModel);
-    if(error) throw new Error(error)
+      const { error } = await createCarModelAction(carModel);
+      if (error) throw new Error(error);
       handleClose();
       toast({
         className: "bg-green-700",
@@ -66,7 +65,6 @@ const CarModelForm = ({ carMakers }: { carMakers: CarMaker[] }) => {
         ),
       });
     } catch (error: any) {
-      console.log(error);
       toast({
         variant: "destructive",
         title: "Welcome back.",

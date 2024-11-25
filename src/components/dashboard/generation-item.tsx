@@ -217,7 +217,6 @@ function EditCarGenerationForm({ item }: { item: CarGenerationProps }) {
         ),
       });
     } catch (error: any) {
-      console.log(error);
       toast({
         variant: "destructive",
         title: "Something went wrong.",
