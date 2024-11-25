@@ -353,7 +353,6 @@ function TableActions({
         ),
       });
     } catch (error: any) {
-      console.log(error);
       setIsLoading(false);
       toast({
         variant: "destructive",
@@ -652,7 +651,6 @@ function DeleteService({
                   ),
                 });
               } catch (error: any) {
-                console.log(error);
                 setIsDeleting(false);
                 toast({
                   variant: "destructive",

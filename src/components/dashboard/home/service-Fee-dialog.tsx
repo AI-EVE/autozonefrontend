@@ -486,8 +486,6 @@ function DeleteFee({
                   ),
                 });
               } catch (error: any) {
-                console.log(error);
-
                 toast({
                   variant: "destructive",
                   title: "Faild to delete service fee data.",
