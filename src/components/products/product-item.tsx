@@ -6,7 +6,6 @@ import FullImagesGallery from "./product-images";
 import { formatCurrency } from "@lib/helper";
 import { ProdcutAction } from "./product-actions";
 import Link from "next/link";
-import { STATIC_IMAGES } from "@lib/constants";
 import { ImageOff } from "lucide-react";
 
 const ProductItem = async ({

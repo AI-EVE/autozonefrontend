@@ -1,6 +1,5 @@
 import ProductImages from "@components/products/product-images";
 import { Card } from "@components/ui/card";
-import { STATIC_IMAGES } from "@lib/constants";
 import { CarItem as CarItemProps } from "@lib/types";
 import React, { useMemo } from "react";
 import CarAction from "./car-item-actions";
