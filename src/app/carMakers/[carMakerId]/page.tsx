@@ -168,7 +168,6 @@ export default function Page({ params: { carMakerId } }: Props) {
         }
       );
       if (response.ok) {
-        console.log("Success:", response.);
         const result = await response.json();
         toast({
           title: "Success",
