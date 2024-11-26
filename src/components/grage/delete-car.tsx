@@ -33,7 +33,7 @@ const DeleteCar = ({
       )}
     >
       <div className="space-y-0.5   ">
-        <label className=" font-semibold">Products</label>
+        <label className=" font-semibold">Delete</label>
         <p className=" text-muted-foreground text-sm">Delete car.</p>
       </div>
       <div className=" sm:pr-2">

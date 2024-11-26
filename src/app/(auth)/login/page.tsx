@@ -27,11 +27,14 @@ import { useToast } from "@/hooks/use-toast";
 import SuccessToastDescription, {
   ErorrToastDescription,
 } from "@/components/toast-items";
+import { redirect } from "next/dist/server/api-utils";
+import { useRouter } from "next/navigation";
 
 type LoginFormSchemaTypes = z.infer<typeof LoginFormSchema>;
 const Page = () => {
   const [isShowPass, setIsShowPass] = useState(false);
   const { toast } = useToast();
+  const router = useRouter();
   const form = useForm<z.infer<typeof LoginFormSchema>>({
     mode: "onChange",
     resolver: zodResolver(LoginFormSchema),
@@ -45,7 +48,14 @@ const Page = () => {
 
   async function onSubmit(values: z.infer<typeof LoginFormSchema>) {
     try {
-      await loginUser(values);
+      const { data, error } = await loginUser(values);
+      if (error) {
+        throw new Error(error);
+      }
+
+      localStorage.setItem("auto-zone-token", data.token);
+
+      router.replace("/");
 
       toast({
         className: "bg-green-700",

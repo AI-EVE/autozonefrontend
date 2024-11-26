@@ -29,8 +29,8 @@ export async function loginUser(loginData: z.infer<typeof LoginFormSchema>) {
   // const decoded = jwtDecode(token.token);
   // console.log(token.token, "TOKEN");
 
-  redirect("/");
-
+  // redirect("/");
+  return { data: token, error: null };
   /// this is another way of which you can get the data from token.
   // const [header, payload, signature] = token.token.split(".");
   // const decodedHeader = atob(header);

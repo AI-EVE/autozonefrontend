@@ -61,6 +61,15 @@ const NavDrawer = () => {
             size="sm"
             onClick={() => setOpen(false)}
           >
+            <Link href="/dashboard/customers">Customers</Link>
+          </Button>
+          <Button
+            asChild
+            className=" justify-start"
+            variant="ghost"
+            size="sm"
+            onClick={() => setOpen(false)}
+          >
             <Link href="/dashboard">Dashboard</Link>
           </Button>
           <Button

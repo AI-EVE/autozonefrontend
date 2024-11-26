@@ -17,7 +17,7 @@ const CarItem = ({
 
   const viewedImages = carImages.length ? carImages : [];
   return (
-    <Card className="   border    min-h-[250px]">
+    <Card className="border min-h-[250px]">
       <Link
         href={`/grage/${car.clientId}?car=${car.id}`}
         className="  flex  flex-col  md:flex-row h-full w-full relative "
@@ -87,7 +87,7 @@ const CarItem = ({
               className=" w-5 h-5 border rounded-md"
             />
           </div>
-          <CarAction pageSize={pageSize} carId={car.id} />
+          <CarAction pageSize={pageSize} carId={car.clientId} />
         </section>
       </Link>
     </Card>
