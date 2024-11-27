@@ -10,6 +10,7 @@ import { Pencil, SendHorizontal, Trash2 } from "lucide-react";
 import { Switch } from "@/components/ui/switch";
 import SubmitProductTypeForm from "./(components)/submit-product-type-form";
 import React from "react";
+import Header from "@components/home/header";
 
 interface ProductType {
   id: string;
@@ -266,6 +267,7 @@ export default function Page() {
 
   return (
     <>
+      {/* <Header /> */}
       {loading && (
         <div className="fixed top-0 left-0 w-full h-full bg-dark-2 bg-opacity-90 flex justify-center items-center">
           <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-amber-500"></div>
