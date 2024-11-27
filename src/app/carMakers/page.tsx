@@ -3,6 +3,7 @@ import { CarMakerBulk } from "./(types)/CarMakerBulk";
 import CarMakerCard from "./(components)/car-maker-card";
 import CarMakersHeader from "./(components)/car-makers-header";
 import { getToken } from "@lib/helper";
+import Header from "@components/home/header";
 
 async function fetchCarMakers(): Promise<CarMakerBulk[]> {
   const token = getToken();
