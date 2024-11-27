@@ -88,9 +88,7 @@ const InventoryTable = ({
   return (
     <Table className=" mt-10">
       <TableCaption>
-        {productBought.length
-          ? "A list of all your inventory receipts."
-          : "No receipts"}
+        {productBought.length ? "A list of all your receipts." : "No receipts"}
       </TableCaption>
       <TableHeader>
         <TableRow>

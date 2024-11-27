@@ -184,7 +184,7 @@ const SearchDialog = ({
       </DialogTrigger>
       <DialogContent className="max-h-[70vh] overflow-y-auto sm:max-w-[425px] border-none">
         <DialogHeader>
-          <DialogTitle>Search for recipts</DialogTitle>
+          <DialogTitle>Search for receipts</DialogTitle>
           <DialogDescription>Filter throught the inventory.</DialogDescription>
         </DialogHeader>
         <form action={handleSub}>

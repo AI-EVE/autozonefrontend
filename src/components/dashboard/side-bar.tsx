@@ -28,7 +28,7 @@ const ICON_SIZE = 22;
 const SUB_LINKS = [
   {
     icon: <House size={ICON_SIZE} />,
-    title: "Home",
+    title: "Sales",
     herf: "/dashboard",
   },
 
@@ -47,14 +47,14 @@ const SUB_LINKS = [
   //   title: "Garage",
   //   herf: "/dashboard/cars",
   // },
-  {
-    icon: <PersonStanding size={ICON_SIZE} />,
-    title: "Customers",
-    herf: "/dashboard/customers",
-  },
+  // {
+  //   icon: <PersonStanding size={ICON_SIZE} />,
+  //   title: "Customers",
+  //   herf: "/dashboard/customers",
+  // },
   {
     icon: <Grid2x2Plus size={ICON_SIZE} />,
-    title: "Insert data",
+    title: "Insert Product",
     herf: "/dashboard/insert-data",
   },
 ];

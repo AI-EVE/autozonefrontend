@@ -32,7 +32,7 @@ const Page = ({ searchParams }: { searchParams: SearchParams }) => {
   const pageKey = shopName + dateOfOrderFrom + dateOfOrderTo + minTotalPrice;
   return (
     <main className=" relative">
-      <h2 className="  font-semibold text-4xl">INVENTORY MANAGEMENT.</h2>
+      <h2 className="  font-semibold text-4xl">MANAGE MY RECEIPTS.</h2>
       <section className=" sm:pl-4">
         <div className=" space-y-5 mt-12">
           {/* <RestockingForm /> */}

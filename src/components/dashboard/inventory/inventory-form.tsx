@@ -184,13 +184,13 @@ const InventoryForm = ({
 
       toast({
         className: "bg-green-700",
-        title: proBoughtToEdit ? "Inventory updated" : "Success.",
+        title: proBoughtToEdit ? "Receipt updated" : "Success.",
         description: (
           <SuccessToastDescription
             message={
               proBoughtToEdit
-                ? "Inventory receipt has been updated."
-                : "A new inventory receipt created."
+                ? "Receipt has been updated."
+                : "A new Receipt created."
             }
           />
         ),
@@ -200,8 +200,8 @@ const InventoryForm = ({
       toast({
         variant: "destructive",
         title: proBoughtToEdit
-          ? "Faild to update inventory's data"
-          : "Faild to create a new inventory.",
+          ? "Faild to update receipt's data"
+          : "Faild to create a new receipt.",
         description: <ErorrToastDescription error={error.message} />,
       });
     }
@@ -209,24 +209,24 @@ const InventoryForm = ({
   return (
     <DialogComponent open={isItOpen} onOpenChange={handleClose}>
       <Button onClick={() => setIsOpen(true)} size="sm" className=" w-full">
-        Create client
+        Create Receipt
       </Button>
 
       <DialogComponent.Content className=" max-h-[70vh]  sm:max-h-[76vh]  overflow-y-auto max-w-[1000px] sm:p-14">
         <DialogComponent.Header>
           <DialogComponent.Title>
             {reStockingBillId
-              ? "Add more inventory"
+              ? "Add more to the receipt"
               : proBoughtToEdit
-              ? "Edit inventory"
-              : "Add inventory"}
+              ? "Edit receipt"
+              : "Add receipt"}
           </DialogComponent.Title>
           <DialogComponent.Description>
             {reStockingBillId
-              ? "Add more inventory to the same recipt."
+              ? "Add more Products to the same receipt."
               : proBoughtToEdit
-              ? `Edit inventory data. `
-              : "Make a recipt for all the inventory bought."}
+              ? `Edit receipt data. `
+              : "Make a receipt for all the products bought."}
           </DialogComponent.Description>
         </DialogComponent.Header>
         {proBoughtToEdit ? (
@@ -486,7 +486,7 @@ const InventoryForm = ({
               <div className=" space-y-4">
                 <div className=" border  flex  items-center px-4 py-2 rounded-lg justify-between">
                   <span className=" text-muted-foreground text-sm">
-                    Add new inventory
+                    Add new receipt
                   </span>
                   <Button
                     size="sm"

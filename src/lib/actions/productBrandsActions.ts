@@ -10,6 +10,7 @@ export async function getAllProductBrandsAction() {
   //   return { data: null, error: "You are not authorized to make this action." };
   const response = await fetch(`${process.env.API_URL}/api/productbrands`, {
     method: "GET",
+    cache: "no-cache",
     // headers: {
     //   Authorization: `Bearer ${token}`,
     // },

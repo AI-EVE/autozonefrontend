@@ -70,7 +70,34 @@ const NavDrawer = () => {
             size="sm"
             onClick={() => setOpen(false)}
           >
-            <Link href="/carMakers">Manage Car Makers</Link>
+            <Link href="/carMakers">CarMakers Meta-Data</Link>
+          </Button>
+          <Button
+            asChild
+            className=" justify-start"
+            variant="ghost"
+            size="sm"
+            onClick={() => setOpen(false)}
+          >
+            <Link href="/categories">Categories</Link>
+          </Button>
+          <Button
+            asChild
+            className=" justify-start"
+            variant="ghost"
+            size="sm"
+            onClick={() => setOpen(false)}
+          >
+            <Link href="/productBrands">Product Brands</Link>
+          </Button>
+          <Button
+            asChild
+            className=" justify-start"
+            variant="ghost"
+            size="sm"
+            onClick={() => setOpen(false)}
+          >
+            <Link href="/productTypes">Product Types</Link>
           </Button>
           <Button
             asChild
@@ -81,15 +108,15 @@ const NavDrawer = () => {
           >
             <Link href="/dashboard">Dashboard</Link>
           </Button>
-          <Button
+          {/* <Button
             asChild
             className=" justify-start"
             variant="ghost"
             size="sm"
             onClick={() => setOpen(false)}
           >
-            <Link href="/dashboard/insert-data">Insert data</Link>
-          </Button>
+            <Link href="/dashboard/insert-data">Insert Product</Link>
+          </Button> */}
         </div>
         <DrawerFooter>
           {/* <DrawerClose>
