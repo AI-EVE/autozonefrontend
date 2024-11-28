@@ -1,6 +1,7 @@
 import CarItem from "@components/grage/car-item";
 import FullImagesGallery from "@components/full-images-gallery";
 import { getCarByIdAction } from "@lib/actions/carsAction";
+// import { STATIC_IMAGES } from "@lib/constants";
 import { ClientWithPhoneNumbers } from "@lib/types";
 import {
   Accordion,
@@ -40,15 +41,12 @@ const Page = async ({
 }) => {
   // const { data, error } = await getCarByIdAction(params.carId);
   const carId = searchParams.car || "";
-  console.log("carId", carId);
 
   const [carData, carGeneration, carMakers] = await Promise.all([
     getCarByIdAction(params.carId),
     getAllCarGenerationsAction(),
     getAllCarMakersAction(),
   ]);
-
-  console.log("car", carData);
 
   const { data, error } = carData;
   const { data: carGenerationData, error: carGenerationError } = carGeneration;
@@ -67,7 +65,7 @@ const Page = async ({
     id: data?.id,
     phones: clinetPhones,
   };
-  console.log(car, "idjsaoiajsdiojasdiojadosaoidjoais");
+
   const clientOtherCars = data.cars.filter(
     (car) => car.id !== Number(params.carId)
   );

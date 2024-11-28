@@ -14,8 +14,6 @@ import {
   CarItem,
   Category,
   ClientWithPhoneNumbers,
-  PhoneNumber,
-  ProductBoughtData,
   Service,
   ServiceStatus,
 } from "@lib/types";
@@ -24,9 +22,7 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuLabel,
   DropdownMenuPortal,
-  DropdownMenuSeparator,
   DropdownMenuSub,
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
@@ -40,23 +36,17 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
 } from "@/components/ui/dialog";
 
 import {
   ArrowDownToLine,
   Check,
-  CircleUser,
   Ellipsis,
   HandPlatter,
-  LoaderCircle,
-  PackageMinus,
   PackagePlus,
-  Pencil,
   ReceiptText,
   Replace,
   Trash2,
-  UserRoundMinus,
 } from "lucide-react";
 import { useToast } from "@hooks/use-toast";
 import SuccessToastDescription, {
@@ -64,35 +54,8 @@ import SuccessToastDescription, {
 } from "@components/toast-items";
 import Spinner from "@components/Spinner";
 
-import { deleteClientByIdAction } from "@lib/actions/clientActions";
-import {
-  useParams,
-  usePathname,
-  useRouter,
-  useSearchParams,
-} from "next/navigation";
-import useCarCountPerClient from "@lib/queries/useCarCountPerClient";
-import Link from "next/link";
-import {
-  deleteRestockingBillAction,
-  editRestockingBillAction,
-} from "@lib/actions/restockingBillActions";
-import { Input } from "@components/ui/input";
-import { Switch } from "@components/ui/switch";
-import { Label } from "@components/ui/label";
-import { Checkbox } from "@components/ui/checkbox";
-import { deleteProductsBoughtByIdAction } from "@lib/actions/productBoughtActions";
-import { format, isEqual } from "date-fns";
-import { Calendar as CalendarIcon } from "lucide-react";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
-import { cn } from "@/lib/utils";
-
-import { Calendar } from "@/components/ui/calendar";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@components/ui/popover";
 import StatusBadge from "./status-badge";
 import ServiceFeesDialog from "./service-Fee-dialog";
 import ProductSoldDialog from "./products-sold-dialog";
@@ -101,7 +64,6 @@ import ClientDialog from "./client-dialog";
 import {
   deleteServiceAction,
   editServiceAction,
-  serviceDownloadPdf,
 } from "@lib/actions/serviceActions";
 import EditServiceForm from "./edit-service-form";
 const formatCurrency = (value: number) =>

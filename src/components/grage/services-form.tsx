@@ -51,6 +51,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import Alert from "@components/alert";
+import { isNull } from "lodash";
 export const formatCurrency = (value: number) =>
   new Intl.NumberFormat("en", { style: "currency", currency: "egp" }).format(
     value
@@ -85,7 +86,9 @@ const ServicesForm = ({
   const searchParam = useSearchParams();
   const router = useRouter();
   const pathname = usePathname();
-  const [isOpen, setIsOpen] = useState(false);
+  const serivceParam = searchParam.get("service");
+  console.log(!isNull(serivceParam) ? true : false, "SSSSS");
+  const [isOpen, setIsOpen] = useState(!isNull(serivceParam) ? true : false);
   const [currTab, setCurrTab] = useState("item-1");
   const { toast } = useToast();
 
@@ -162,7 +165,7 @@ const ServicesForm = ({
 
   const params = new URLSearchParams(searchParam);
   function handleOpen(filter: string) {
-    if (useParams) {
+    if (!isNull(serivceParam)) {
       params.set("edit", filter);
       router.replace(`${pathname}?${params.toString()}`, { scroll: false });
     } else {
@@ -187,13 +190,13 @@ const ServicesForm = ({
   }, [productsToSell, form]);
 
   function handleClose() {
-    if (useParams) {
+    if (!isNull(serivceParam)) {
       const params = new URLSearchParams(searchParam);
-      params.delete("edit");
+      params.delete("service");
       router.replace(`${pathname}?${params.toString()}`, { scroll: false });
-    } else {
-      setIsOpen(false);
     }
+    setIsOpen(false);
+
     if (isLoading) return;
     form.reset(defaultValues);
   }
@@ -440,7 +443,7 @@ const ServicesForm = ({
                                       />
                                     </FormControl>
                                     <FormDescription>
-                                      Enter fee cost.
+                                      Enter the cost of each unit.
                                     </FormDescription>
                                     <FormMessage />
                                   </FormItem>
@@ -469,7 +472,7 @@ const ServicesForm = ({
                                       />
                                     </FormControl>
                                     <FormDescription>
-                                      Enter the total discount.
+                                      Enter the total discount you got.
                                     </FormDescription>
                                     <FormMessage />
                                   </FormItem>
@@ -490,7 +493,7 @@ const ServicesForm = ({
                                       />
                                     </FormControl>
                                     <FormDescription>
-                                      Enter the Category.
+                                      Enter the amount you bought.
                                     </FormDescription>
                                     <FormMessage />
                                   </FormItem>
@@ -507,12 +510,12 @@ const ServicesForm = ({
                                   <FormControl>
                                     <Textarea
                                       disabled={isLoading}
-                                      placeholder="Fee Notes..."
+                                      placeholder="Car information..."
                                       {...field}
                                     />
                                   </FormControl>
                                   <FormDescription>
-                                    Enter Fee&apos;s information.
+                                    Enter car&apos;s information.
                                   </FormDescription>
                                   <FormMessage />
                                 </FormItem>
@@ -638,27 +641,7 @@ const ServicesForm = ({
                             >
                               <Cross2Icon className="h-4 w-4" />
                             </button>
-                            <FormField
-                              disabled={isLoading}
-                              control={form.control}
-                              name={`productsToSell.${i}.productId`}
-                              render={({ field }) => (
-                                <FormItem className=" w-full mb-auto">
-                                  <FormLabel>Product</FormLabel>
-                                  <FormControl>
-                                    <ProductsComboBox
-                                      setValue={field.onChange}
-                                      value={field.value}
-                                      options={products}
-                                    />
-                                  </FormControl>
-                                  <FormDescription>
-                                    Choose a product
-                                  </FormDescription>
-                                  <FormMessage />
-                                </FormItem>
-                              )}
-                            />
+
                             <div className=" flex  flex-col gap-2  sm:flex-row  ">
                               <FormField
                                 disabled={isLoading}
@@ -712,7 +695,7 @@ const ServicesForm = ({
                                       />
                                     </FormControl>
                                     <FormDescription>
-                                      Enter the total discount.
+                                      Enter the total discount you got.
                                     </FormDescription>
                                     <FormMessage />
                                   </FormItem>
@@ -741,14 +724,34 @@ const ServicesForm = ({
                                       />
                                     </FormControl>
                                     <FormDescription>
-                                      Enter the quantity.
+                                      Enter the amount you bought.
                                     </FormDescription>
                                     <FormMessage />
                                   </FormItem>
                                 )}
                               />
                             </div>
-
+                            <FormField
+                              disabled={isLoading}
+                              control={form.control}
+                              name={`productsToSell.${i}.productId`}
+                              render={({ field }) => (
+                                <FormItem className=" w-full mb-auto">
+                                  <FormLabel>Notes</FormLabel>
+                                  <FormControl>
+                                    <ProductsComboBox
+                                      setValue={field.onChange}
+                                      value={field.value}
+                                      options={products}
+                                    />
+                                  </FormControl>
+                                  <FormDescription>
+                                    Enter car&apos;s information.
+                                  </FormDescription>
+                                  <FormMessage />
+                                </FormItem>
+                              )}
+                            />
                             <FormField
                               disabled={isLoading}
                               control={form.control}
@@ -759,12 +762,12 @@ const ServicesForm = ({
                                   <FormControl>
                                     <Textarea
                                       disabled={isLoading}
-                                      placeholder="Information..."
+                                      placeholder="Car information..."
                                       {...field}
                                     />
                                   </FormControl>
                                   <FormDescription>
-                                    Enter Notes.
+                                    Enter car&apos;s information.
                                   </FormDescription>
                                   <FormMessage />
                                 </FormItem>

@@ -6,6 +6,12 @@ import Spinner from "@components/Spinner";
 import ProductPagenation from "@components/products/product-pagenation";
 import ProductsFilterBar from "@components/products/products-filter-bar";
 import IntersectionProvidor from "@components/products/intersection-providor";
+import { getAllCategoriesAction } from "@lib/actions/categoriesAction";
+import { getAllProductBrandsAction } from "@lib/actions/productBrandsActions";
+import { getAllProductTypesAction } from "@lib/actions/productTypeActions";
+
+import { getProductsCountAction } from "@lib/actions/productsActions";
+import ProductManagement from "@components/products-management";
 
 // Define the type for searchParam
 interface SearchParams {
@@ -19,7 +25,7 @@ interface SearchParams {
   isAvailable?: string;
 }
 
-const Page = ({ searchParams }: { searchParams: SearchParams }) => {
+const Page = async ({ searchParams }: { searchParams: SearchParams }) => {
   const name = searchParams?.name ?? "";
   const pageNumber = searchParams?.page ?? "1";
   const categoryId = searchParams?.categoryId ?? "";
@@ -31,6 +37,24 @@ const Page = ({ searchParams }: { searchParams: SearchParams }) => {
   //   return <div>Error loading data</div>;
   // }
 
+  const [categories, productBrands, brandTypes, count] = await Promise.all([
+    getAllCategoriesAction(),
+    getAllProductBrandsAction(),
+    getAllProductTypesAction(),
+    getProductsCountAction({
+      name,
+      categoryId,
+      productBrandId,
+      productTypeId,
+      isAvailable,
+    }),
+  ]);
+  const { data: categoriesData, error: categoriesError } = categories;
+  const { data: productBrandsData, error: productBrandsError } = productBrands;
+  const { data: brandTypesData, error: brandTypesError } = brandTypes;
+  const { data: countData, error: countError } = count;
+
+  console.log(countData, "DAASDADADADADA");
   const key =
     pageNumber +
     categoryId +
@@ -53,8 +77,18 @@ const Page = ({ searchParams }: { searchParams: SearchParams }) => {
             productTypeId={productTypeId}
             productBrandId={productBrandId}
             isAvailable={isAvailable}
+            categories={categoriesData}
+            productBrands={productBrandsData}
+            productTypes={brandTypesData}
+            count={countData}
           />
           <section className=" flex-1 ">
+            <ProductManagement
+              className=" mt-auto mx-3"
+              categories={categoriesData}
+              productBrands={productBrandsData}
+              productTypes={brandTypesData}
+            />
             <Suspense fallback={<Spinner />} key={key}>
               <ProductsList
                 name={name}
@@ -66,11 +100,12 @@ const Page = ({ searchParams }: { searchParams: SearchParams }) => {
               />
             </Suspense>
             <ProductPagenation
-              name={name}
-              categoryId={categoryId}
-              productTypeId={productTypeId}
-              productBrandId={productBrandId}
-              isAvailable={isAvailable}
+              count={countData}
+              // name={name}
+              // categoryId={categoryId}
+              // productTypeId={productTypeId}
+              // productBrandId={productBrandId}
+              // isAvailable={isAvailable}
             />
           </section>
         </div>

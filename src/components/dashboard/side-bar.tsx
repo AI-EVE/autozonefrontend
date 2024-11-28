@@ -52,11 +52,11 @@ const SUB_LINKS = [
   //   title: "Customers",
   //   herf: "/dashboard/customers",
   // },
-  {
-    icon: <Grid2x2Plus size={ICON_SIZE} />,
-    title: "Insert Product",
-    herf: "/dashboard/insert-data",
-  },
+  // {
+  //   icon: <Grid2x2Plus size={ICON_SIZE} />,
+  //   title: "Insert Product",
+  //   herf: "/dashboard/insert-data",
+  // },
 ];
 
 const SideBar = () => {

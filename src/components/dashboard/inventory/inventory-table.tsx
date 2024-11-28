@@ -9,18 +9,12 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import {
-  ClientWithPhoneNumbers,
-  PhoneNumber,
-  ProductBoughtData,
-} from "@lib/types";
+import { ProductBoughtData } from "@lib/types";
 import { Button } from "@components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import {
@@ -31,13 +25,10 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
 } from "@/components/ui/dialog";
 
 import {
-  CircleUser,
   Ellipsis,
-  LoaderCircle,
   PackageMinus,
   PackagePlus,
   Pencil,
@@ -50,14 +41,7 @@ import SuccessToastDescription, {
 } from "@components/toast-items";
 import Spinner from "@components/Spinner";
 
-import { deleteClientByIdAction } from "@lib/actions/clientActions";
-import {
-  useParams,
-  usePathname,
-  useRouter,
-  useSearchParams,
-} from "next/navigation";
-import useCarCountPerClient from "@lib/queries/useCarCountPerClient";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import {
   deleteRestockingBillAction,

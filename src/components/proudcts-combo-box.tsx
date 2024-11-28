@@ -75,7 +75,7 @@ export const ProductsComboBox: React.FC<ComboBoxProps> = ({
           {selected ? (
             <div className=" flex flex-1 break-all   justify-center gap-5 items-center">
               <p className=" text-wrap  text-left ">
-                Name: {selected.name} / Category : {selected.categoryId}
+                Name: {selected.name} / Category : {selected.category}
               </p>
               <img
                 src={selected.mainProductImage?.imageUrl || DEFAULT_CAR_LOGO}

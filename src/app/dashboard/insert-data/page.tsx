@@ -13,7 +13,7 @@ const Page = () => {
           {/* <CarModelManagement /> */}
           {/* <CarGenAndModelManagement /> */}
           {/* <CarInfoManagement /> */}
-          <ProductManagement />
+          {/* <ProductManagement /> */}
         </div>
 
         {/* <Suspense fallback={<Spinner size={30} className=" mt-10" />}>

@@ -1,5 +1,6 @@
 import ProductImages from "@components/products/product-images";
 import { Card } from "@components/ui/card";
+// import { STATIC_IMAGES } from "@lib/constants";
 import { CarItem as CarItemProps } from "@lib/types";
 import React, { useMemo } from "react";
 import CarAction from "./car-item-actions";
@@ -17,7 +18,7 @@ const CarItem = ({
 
   const viewedImages = carImages.length ? carImages : [];
   return (
-    <Card className="border min-h-[250px]">
+    <Card className="   border    min-h-[250px]">
       <Link
         href={`/grage/${car.clientId}?car=${car.id}`}
         className="  flex  flex-col  md:flex-row h-full w-full relative "
@@ -34,7 +35,7 @@ const CarItem = ({
             </div>
           )}
         </div>
-        <section className="  w-full  xl:pl-14   text-xs  grid grid-cols-1 items-center xs:grid-cols-2   md:grid-cols-1 lg:grid-cols-2  md:w-[65%] gap-y-2 gap-x-3 md:gap-0  p-3 lg:max-w-[900px]   md:pr-10">
+        <section className="  w-full  xl:pl-14   text-xs  grid grid-cols-1 items-center xs:grid-cols-2 h-fit   md:grid-cols-1 lg:grid-cols-2  md:w-[65%] gap-y-2 gap-x-3 md:gap-y-3 md:gap-x-0  p-3 lg:max-w-[900px]    md:pr-10">
           {/* top */}
           <div className=" flex items-center gap-2  ">
             <span className="">- Make: </span>{" "}
@@ -87,7 +88,7 @@ const CarItem = ({
               className=" w-5 h-5 border rounded-md"
             />
           </div>
-          <CarAction pageSize={pageSize} carId={car.clientId} />
+          <CarAction pageSize={pageSize} car={car} />
         </section>
       </Link>
     </Card>
