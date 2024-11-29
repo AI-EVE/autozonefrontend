@@ -243,8 +243,8 @@ function ProductsDialog({
 
   const totals = productsArr.reduce(
     (acc, item) => {
-      acc.totalDiscount += item.discount * item.count;
-      acc.totalPrice += item.totalPriceAfterDiscount;
+      acc.totalDiscount += item.isReturned ? 0 : item.discount * item.count;
+      acc.totalPrice += item.isReturned ? 0 : item.totalPriceAfterDiscount;
       return acc;
     },
     { totalDiscount: 0, totalPrice: 0 }

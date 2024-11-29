@@ -100,13 +100,13 @@ const ServiceTable = ({
   }, 0);
 
   const totalFees = fees.reduce((acc, item) => {
-    acc += item.totalPriceAfterDiscount;
+    acc += item.isReturned ? 0 : item.totalPriceAfterDiscount;
 
     return acc;
   }, 0);
 
   const totalSoldProducts = soldProducts.reduce((acc, item) => {
-    acc += item.totalPriceAfterDiscount;
+    acc += item.isReturned ? 0 : item.totalPriceAfterDiscount;
 
     return acc;
   }, 0);

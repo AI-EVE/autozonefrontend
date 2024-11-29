@@ -203,10 +203,13 @@ const ProductSoldDialog = ({ service }: { service: Service }) => {
 
   const totals = productsArr.reduce(
     (acc, item) => {
-      acc.totalDiscount += item.discount * item.count;
-      acc.totalPriceBeforeDiscount +=
-        (item.pricePerUnit - item.discount) * item.count;
-      acc.totalPriceAfterDiscount += item.totalPriceAfterDiscount;
+      acc.totalDiscount += item.isReturned ? 0 : item.discount * item.count;
+      acc.totalPriceBeforeDiscount += item.isReturned
+        ? 0
+        : (item.pricePerUnit - item.discount) * item.count;
+      acc.totalPriceAfterDiscount += item.isReturned
+        ? 0
+        : item.totalPriceAfterDiscount;
       return acc;
     },
     {
