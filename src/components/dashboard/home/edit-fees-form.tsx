@@ -303,7 +303,13 @@ const EditFeesForm = ({
                 disabled={isLoading || isEqual}
                 className=" w-full sm:w-[unset]"
               >
-                {isLoading ? <Spinner className=" h-full" /> : "Create"}
+                {isLoading ? (
+                  <Spinner className=" h-full" />
+                ) : feesToEdit ? (
+                  "Update"
+                ) : (
+                  "Add"
+                )}
               </Button>
             </DialogComponent.Footer>
           </form>

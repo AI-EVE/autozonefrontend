@@ -140,7 +140,7 @@ const InventoryForm = ({
 
   useEffect(() => {
     productBoughtArr.forEach((item, index) => {
-      const totalAmount = item.pricePerUnit * item.count - item.discount;
+      const totalAmount = (item.pricePerUnit - item.discount) * item.count;
       if (totalAmount > 0) {
         form.clearErrors(`productBought.${index}.discount`);
       }
@@ -149,8 +149,8 @@ const InventoryForm = ({
 
   const total = productBoughtArr.reduce(
     (acc, item) => {
-      acc.totalDiscount += item.discount;
-      acc.totalpriceAfter += item.pricePerUnit * item.count - item.discount;
+      acc.totalDiscount += item.discount * item.count;
+      acc.totalpriceAfter += (item.pricePerUnit - item.discount) * item.count;
 
       return acc;
     },
@@ -436,9 +436,9 @@ const InventoryForm = ({
                         Total amount spent:
                         <span className=" ml-3">
                           {formatCurrency(
-                            productBoughtArr[i]?.pricePerUnit *
-                              productBoughtArr[i]?.count -
-                              productBoughtArr[i]?.discount
+                            (productBoughtArr[i]?.pricePerUnit -
+                              productBoughtArr[i]?.discount) *
+                              productBoughtArr[i]?.count
                           )}
                         </span>
                       </div>
@@ -709,9 +709,9 @@ const InventoryForm = ({
                         Total amount spent:
                         <span className=" ml-3">
                           {formatCurrency(
-                            productBoughtArr[i]?.pricePerUnit *
-                              productBoughtArr[i]?.count -
-                              productBoughtArr[i]?.discount
+                            (productBoughtArr[i]?.pricePerUnit -
+                              productBoughtArr[i]?.discount) *
+                              productBoughtArr[i]?.count
                           )}
                         </span>
                       </div>

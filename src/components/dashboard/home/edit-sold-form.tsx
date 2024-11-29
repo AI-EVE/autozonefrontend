@@ -81,7 +81,6 @@ const EditSoldForm = ({
   });
 
   const { pricePerUnit, count, discount } = form.watch();
-
   useEffect(() => {
     if (pricePerUnit * count > discount) {
       form.clearErrors("discount");
@@ -119,7 +118,7 @@ const EditSoldForm = ({
 
       if (addSoldId) {
         const { error } = await createProductToSellAction(addSoldProduct);
-        throw new Error(error);
+        if (error) throw new Error(error);
       }
 
       if (proSold) {
@@ -328,11 +327,13 @@ const EditSoldForm = ({
                 <div>Price per unit: {formatCurrency(pricePerUnit)}</div>
                 <div>
                   Total price before discount:{" "}
-                  {formatCurrency(pricePerUnit * count)}
+                  {formatCurrency(pricePerUnit * count || 0)}
                 </div>
-                <div>Total discount: {formatCurrency(discount)}</div>
+                <div>
+                  Total discount: {formatCurrency(discount * count || 0)}
+                </div>
                 <div className=" border-t pt-1">
-                  Net: {formatCurrency(pricePerUnit * count - discount)}
+                  Net: {formatCurrency((pricePerUnit - discount) * count || 0)}
                 </div>
               </div>
             </div>
@@ -353,7 +354,13 @@ const EditSoldForm = ({
                 disabled={isLoading || isEqual}
                 className=" w-full sm:w-[unset]"
               >
-                {isLoading ? <Spinner className=" h-full" /> : "Create"}
+                {isLoading ? (
+                  <Spinner className=" h-full" />
+                ) : proSold ? (
+                  "Edit"
+                ) : (
+                  "Add"
+                )}
               </Button>
             </DialogComponent.Footer>
           </form>

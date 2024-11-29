@@ -91,7 +91,6 @@ const ServicesForm = ({
   const [isOpen, setIsOpen] = useState(!isNull(serivceParam) ? true : false);
   const [currTab, setCurrTab] = useState("item-1");
   const { toast } = useToast();
-
   const defaultValues = {
     clientId: (client && client.id) || 0,
     carId: (car && car.id) || 0,
@@ -110,7 +109,6 @@ const ServicesForm = ({
     control: form.control,
     name: "serviceFees",
   });
-
   const productsToSell = useWatch({
     control: form.control,
     name: "productsToSell",
@@ -156,7 +154,7 @@ const ServicesForm = ({
   const totalProductSoldAmounts = productsToSell.reduce(
     (acc, curr) => {
       acc.totalPrice += curr.pricePerUnit * curr.count;
-      acc.totalDiscount += curr.discount;
+      acc.totalDiscount += curr.discount * curr.count;
 
       return acc;
     },
@@ -318,7 +316,7 @@ const ServicesForm = ({
                             />
                           </FormControl>
                           <FormDescription>
-                            Enter car&apos;s chassis number.
+                            Enter Service&apos;s status.
                           </FormDescription>
                           <FormMessage />
                         </FormItem>
@@ -336,13 +334,11 @@ const ServicesForm = ({
                         <FormControl>
                           <Textarea
                             disabled={isLoading}
-                            placeholder="Car information..."
+                            placeholder="Information about the service..."
                             {...field}
                           />
                         </FormControl>
-                        <FormDescription>
-                          Enter car&apos;s information.
-                        </FormDescription>
+                        <FormDescription>Enter Note if needed.</FormDescription>
                         <FormMessage />
                       </FormItem>
                     )}
@@ -423,6 +419,27 @@ const ServicesForm = ({
                               <FormField
                                 disabled={isLoading}
                                 control={form.control}
+                                name={`serviceFees.${i}.categoryId`}
+                                render={({ field }) => (
+                                  <FormItem className=" w-full  mb-auto">
+                                    <FormLabel>Category</FormLabel>
+                                    <FormControl>
+                                      <ComboBox
+                                        setValue={field.onChange}
+                                        value={field.value}
+                                        options={categories}
+                                      />
+                                    </FormControl>
+                                    <FormDescription>
+                                      Enter a Category.
+                                    </FormDescription>
+                                    <FormMessage />
+                                  </FormItem>
+                                )}
+                              />
+                              <FormField
+                                disabled={isLoading}
+                                control={form.control}
                                 name={`serviceFees.${i}.price`}
                                 render={({ field }) => (
                                   <FormItem className="  w-full mb-auto ">
@@ -443,7 +460,7 @@ const ServicesForm = ({
                                       />
                                     </FormControl>
                                     <FormDescription>
-                                      Enter the cost of each unit.
+                                      Enter the Cost
                                     </FormDescription>
                                     <FormMessage />
                                   </FormItem>
@@ -455,7 +472,7 @@ const ServicesForm = ({
                                 name={`serviceFees.${i}.discount`}
                                 render={({ field }) => (
                                   <FormItem className="  w-full mb-auto">
-                                    <FormLabel>Discount</FormLabel>
+                                    <FormLabel>Enter Discount</FormLabel>
                                     <FormControl>
                                       <Input
                                         type="text"
@@ -471,30 +488,7 @@ const ServicesForm = ({
                                         // {...field}
                                       />
                                     </FormControl>
-                                    <FormDescription>
-                                      Enter the total discount you got.
-                                    </FormDescription>
-                                    <FormMessage />
-                                  </FormItem>
-                                )}
-                              />
-                              <FormField
-                                disabled={isLoading}
-                                control={form.control}
-                                name={`serviceFees.${i}.categoryId`}
-                                render={({ field }) => (
-                                  <FormItem className=" w-full  mb-auto">
-                                    <FormLabel>Category</FormLabel>
-                                    <FormControl>
-                                      <ComboBox
-                                        setValue={field.onChange}
-                                        value={field.value}
-                                        options={categories}
-                                      />
-                                    </FormControl>
-                                    <FormDescription>
-                                      Enter the amount you bought.
-                                    </FormDescription>
+                                    <FormDescription>Discount.</FormDescription>
                                     <FormMessage />
                                   </FormItem>
                                 )}
@@ -510,12 +504,12 @@ const ServicesForm = ({
                                   <FormControl>
                                     <Textarea
                                       disabled={isLoading}
-                                      placeholder="Car information..."
+                                      placeholder="Additional information about the fee..."
                                       {...field}
                                     />
                                   </FormControl>
                                   <FormDescription>
-                                    Enter car&apos;s information.
+                                    Additional infromation if needed.
                                   </FormDescription>
                                   <FormMessage />
                                 </FormItem>
@@ -636,12 +630,32 @@ const ServicesForm = ({
                               onClick={() => {
                                 removeProduct(i);
                               }}
-                              className="  absolute  top-5 right-5 rounded-sm outline-none    opacity-70 transition-opacity hover:opacity-100 focus:outline-none disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground  "
+                              className="absolute top-5 right-5 rounded-sm outline-none opacity-70 transition-opacity hover:opacity-100 focus:outline-none disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground  "
                               type="button"
                             >
                               <Cross2Icon className="h-4 w-4" />
                             </button>
-
+                            <FormField
+                              disabled={isLoading}
+                              control={form.control}
+                              name={`productsToSell.${i}.productId`}
+                              render={({ field }) => (
+                                <FormItem className=" w-full mb-auto">
+                                  <FormLabel>Product</FormLabel>
+                                  <FormControl>
+                                    <ProductsComboBox
+                                      setValue={field.onChange}
+                                      value={field.value}
+                                      options={products}
+                                    />
+                                  </FormControl>
+                                  <FormDescription>
+                                    Select a product.
+                                  </FormDescription>
+                                  <FormMessage />
+                                </FormItem>
+                              )}
+                            />
                             <div className=" flex  flex-col gap-2  sm:flex-row  ">
                               <FormField
                                 disabled={isLoading}
@@ -678,7 +692,7 @@ const ServicesForm = ({
                                 name={`productsToSell.${i}.discount`}
                                 render={({ field }) => (
                                   <FormItem className="  w-full mb-auto">
-                                    <FormLabel>Discount</FormLabel>
+                                    <FormLabel>Discount per unit</FormLabel>
                                     <FormControl>
                                       <Input
                                         type="text"
@@ -695,7 +709,7 @@ const ServicesForm = ({
                                       />
                                     </FormControl>
                                     <FormDescription>
-                                      Enter the total discount you got.
+                                      Enter the discount of each unit.
                                     </FormDescription>
                                     <FormMessage />
                                   </FormItem>
@@ -724,34 +738,14 @@ const ServicesForm = ({
                                       />
                                     </FormControl>
                                     <FormDescription>
-                                      Enter the amount you bought.
+                                      Enter the amount.
                                     </FormDescription>
                                     <FormMessage />
                                   </FormItem>
                                 )}
                               />
                             </div>
-                            <FormField
-                              disabled={isLoading}
-                              control={form.control}
-                              name={`productsToSell.${i}.productId`}
-                              render={({ field }) => (
-                                <FormItem className=" w-full mb-auto">
-                                  <FormLabel>Notes</FormLabel>
-                                  <FormControl>
-                                    <ProductsComboBox
-                                      setValue={field.onChange}
-                                      value={field.value}
-                                      options={products}
-                                    />
-                                  </FormControl>
-                                  <FormDescription>
-                                    Enter car&apos;s information.
-                                  </FormDescription>
-                                  <FormMessage />
-                                </FormItem>
-                              )}
-                            />
+
                             <FormField
                               disabled={isLoading}
                               control={form.control}
@@ -762,12 +756,12 @@ const ServicesForm = ({
                                   <FormControl>
                                     <Textarea
                                       disabled={isLoading}
-                                      placeholder="Car information..."
+                                      placeholder="Additional information about the product..."
                                       {...field}
                                     />
                                   </FormControl>
                                   <FormDescription>
-                                    Enter car&apos;s information.
+                                    Additional infromation if needed.
                                   </FormDescription>
                                   <FormMessage />
                                 </FormItem>
@@ -778,9 +772,9 @@ const ServicesForm = ({
                               Total amount spent:
                               <span className=" ml-3">
                                 {formatCurrency(
-                                  productsToSell[i]?.pricePerUnit *
-                                    productsToSell[i]?.count -
-                                    productsToSell[i]?.discount
+                                  (productsToSell[i]?.pricePerUnit -
+                                    productsToSell[i]?.discount) *
+                                    productsToSell[i]?.count
                                 )}
                               </span>
                             </div>

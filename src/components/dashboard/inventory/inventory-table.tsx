@@ -243,7 +243,7 @@ function ProductsDialog({
 
   const totals = productsArr.reduce(
     (acc, item) => {
-      acc.totalDiscount += item.discount;
+      acc.totalDiscount += item.discount * item.count;
       acc.totalPrice += item.totalPriceAfterDiscount;
       return acc;
     },

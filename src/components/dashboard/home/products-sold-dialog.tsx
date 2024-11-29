@@ -173,19 +173,6 @@ const ProductSoldDialog = ({ service }: { service: Service }) => {
     params.set("editSold", filter);
     router.replace(`${pathname}?${params.toString()}`, { scroll: false });
   }
-  // console.log(hasReturnedValue, "SSSSSSS");
-
-  //   const [priceValue, setPriceValue] = useState("");
-  //   const [discountValue, setDiscountValue] = useState("");
-  //   const [countValue, setCountValue] = useState("");
-  //   const [totalPriceAfterDiscountValue, setTotalPriceAfterDiscount] =
-  //     useState("");
-  //   const [nameValue, setNameValue] = useState("");
-  //   const [hasReturnedValue, setHasReturnedValue] = useState<boolean>(false);
-  //   const [checked, setChecked] = useState(false);
-  //   const searchParam = useSearchParams();
-  //   const router = useRouter();
-  //   const pathname = usePathname();
 
   let productsArr = soldProducts;
 
@@ -216,8 +203,9 @@ const ProductSoldDialog = ({ service }: { service: Service }) => {
 
   const totals = productsArr.reduce(
     (acc, item) => {
-      acc.totalDiscount += item.discount;
-      acc.totalPriceBeforeDiscount += item.pricePerUnit * item.count;
+      acc.totalDiscount += item.discount * item.count;
+      acc.totalPriceBeforeDiscount +=
+        (item.pricePerUnit - item.discount) * item.count;
       acc.totalPriceAfterDiscount += item.totalPriceAfterDiscount;
       return acc;
     },
