@@ -324,7 +324,7 @@ const EditSoldForm = ({
                     {count}
                   </span>
                 </div>
-                <div>Price per unit: {formatCurrency(pricePerUnit)}</div>
+                <div>Price per unit: {formatCurrency(pricePerUnit || 0)}</div>
                 <div>
                   Total price before discount:{" "}
                   {formatCurrency(pricePerUnit * count || 0)}
