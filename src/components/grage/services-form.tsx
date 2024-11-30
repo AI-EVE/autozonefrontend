@@ -423,6 +423,28 @@ const ServicesForm = ({
                               <FormField
                                 disabled={isLoading}
                                 control={form.control}
+                                name={`serviceFees.${i}.categoryId`}
+                                render={({ field }) => (
+                                  <FormItem className=" w-full  mb-auto">
+                                    <FormLabel>Category</FormLabel>
+                                    <FormControl>
+                                      <ComboBox
+                                        setValue={field.onChange}
+                                        value={field.value}
+                                        options={categories}
+                                      />
+                                    </FormControl>
+                                    <FormDescription>
+                                      Chose the relievant category to the
+                                      service fee provided.
+                                    </FormDescription>
+                                    <FormMessage />
+                                  </FormItem>
+                                )}
+                              />
+                              <FormField
+                                disabled={isLoading}
+                                control={form.control}
                                 name={`serviceFees.${i}.price`}
                                 render={({ field }) => (
                                   <FormItem className="  w-full mb-auto ">
@@ -473,28 +495,6 @@ const ServicesForm = ({
                                     </FormControl>
                                     <FormDescription>
                                       Enter the service fee discount.
-                                    </FormDescription>
-                                    <FormMessage />
-                                  </FormItem>
-                                )}
-                              />
-                              <FormField
-                                disabled={isLoading}
-                                control={form.control}
-                                name={`serviceFees.${i}.categoryId`}
-                                render={({ field }) => (
-                                  <FormItem className=" w-full  mb-auto">
-                                    <FormLabel>Category</FormLabel>
-                                    <FormControl>
-                                      <ComboBox
-                                        setValue={field.onChange}
-                                        value={field.value}
-                                        options={categories}
-                                      />
-                                    </FormControl>
-                                    <FormDescription>
-                                      Chose the relievant category to the
-                                      service fee provided.
                                     </FormDescription>
                                     <FormMessage />
                                   </FormItem>
