@@ -98,7 +98,7 @@ const ProductItem = async ({
             </div>
           </div>
           <Link href={`/products/${product.id}?edit=open`}>
-            <Button className="w-1/2" variant="secondary" size="sm">
+            <Button className="w-full" variant="secondary" size="sm">
               Edit
             </Button>
           </Link>

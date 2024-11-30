@@ -92,14 +92,24 @@ const CarItem = ({
           </div>
           <Button
             type="button"
-            className={cn("hidden lg:block lg:opacity-0")}
+            className="hidden lg:block lg:opacity-0"
           ></Button>
-          <Button type="button" className={cn("w-1/2")}>
+          <Button
+            type="button"
+            asChild
+            variant="secondary"
+            className="w-full lg:w-1/2"
+          >
             <Link href={`/grage/${car.clientId}?car=${car.id}&service`}>
               Add Service
             </Link>
           </Button>
-          <Button type="button" className={cn("w-1/2")}>
+          <Button
+            type="button"
+            asChild
+            variant="secondary"
+            className="w-full lg:w-[70%]"
+          >
             <Link href={`/dashboard/?carId=${car.id}`}>
               Go to added Service
             </Link>
