@@ -436,7 +436,10 @@ export interface ProductImage {
 export interface Product {
   id: number;
   categoryId: number;
+  category: string;
   name: string;
+  typeName: string;
+  brandName: string;
   dateAdded: string;
   description: string;
   listPrice: number;

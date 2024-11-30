@@ -16,6 +16,8 @@ import { redirect } from "next/navigation";
 
 interface GetProdcutsActionProps {
   name?: string;
+  typeName?: string;
+  brandName?: string;
   categoryId?: string;
   productTypeId?: string;
   productBrandId?: string;
@@ -71,18 +73,9 @@ export async function getProductsAction({
     };
   }
 
-  const categories = await getAllCategories();
-
   const data = (await response.json()) as Product[];
 
-  const productsWithCategories = data.map((product) => {
-    const category = categories.find(
-      (cat: Category) => cat.id === product.categoryId
-    ).name;
-    return { ...product, category: category };
-  });
-
-  return { data: productsWithCategories, error: "" };
+  return { data: data, error: "" };
 }
 
 export async function getProductByIdAction(id: string) {

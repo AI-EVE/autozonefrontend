@@ -25,7 +25,7 @@ const ProductItem = async ({
   const viewedImages = data?.length
     ? data.map((image: ProductImage) => image.imageUrl)
     : [];
-
+  console.log(product.brandName, product.typeName, "dioasodksaodksa");
   return (
     <li className={`${!product.isAvailable && "opacity-50 "}`}>
       <Link
@@ -54,6 +54,23 @@ const ProductItem = async ({
           <h1 className=" line-clamp-1 text-xl font-semibold">
             {product.name}
           </h1>
+
+          <div className="flex items-center gap-[6px]">
+            <div className="text-md font-bold text-muted-foreground">
+              {product.typeName}
+            </div>
+
+            <div className="bg-muted-foreground w-1 h-1 rounded-full"></div>
+
+            <div className="text-md font-bold text-muted-foreground">
+              {product.brandName}
+            </div>
+            <div className="bg-muted-foreground w-1 h-1 rounded-full"></div>
+            <div className="text-md font-bold text-muted-foreground">
+              {product.category}
+            </div>
+          </div>
+
           <h2 className=" text-sm text-muted-foreground break-words line-clamp-2">
             {product.description}
           </h2>
