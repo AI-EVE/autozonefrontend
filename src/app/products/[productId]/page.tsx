@@ -32,11 +32,6 @@ const ProductView = async ({ params }: { params: Params }) => {
   const { data: productBrandsData, error: productBrandsError } = productBrands;
   const { data: brandTypesData, error: brandTypesError } = brandTypes;
 
-  // const { data: images, error: productImagesError } = productImages;
-  // const { data: productData, error: producError } = product;
-
-  // console.log(product.data, productImages.data, "PPPPPPPPPPPPP");
-
   if (error)
     return <p>Something went wrong while searching for the product&rsquo;</p>;
 

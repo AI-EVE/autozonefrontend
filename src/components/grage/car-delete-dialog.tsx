@@ -59,7 +59,6 @@ const CarDeleteDialog = ({
         ),
       });
     } catch (error: any) {
-      console.log(error);
       setIsLoading?.(false);
       toast({
         variant: "destructive",

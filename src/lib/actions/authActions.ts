@@ -19,29 +19,11 @@ export async function loginUser(loginData: z.infer<typeof LoginFormSchema>) {
   if (!response.ok) return { data: null, error: "Invalid login credentials." };
 
   const token = await response.json();
-  console.log(token, "TTOEKN");
-
-  // localStorage.setItem("auto-zone-token", token);
 
   const getCookies = cookies();
   getCookies.set("auto-zone-token", token.token);
 
-  // const decoded = jwtDecode(token.token);
-  // console.log(token.token, "TOKEN");
-
-  // redirect("/");
   return { data: token, error: null };
-  /// this is another way of which you can get the data from token.
-  // const [header, payload, signature] = token.token.split(".");
-  // const decodedHeader = atob(header);
-  // const parsedHeader = JSON.parse(decodedHeader);
-
-  // const decodedPayload = atob(payload);
-  // const parsedPayload = JSON.parse(decodedPayload);
-
-  // console.log("Algorithm:", parsedHeader.alg, " AAAAA");
-  // console.log("Type:", parsedHeader.typ, "A&AAA");
-  // console.log("Claims:", parsedPayload);
 }
 
 export async function getCurrentUser(): Promise<User | null> {
@@ -92,7 +74,6 @@ export async function logoutUser() {
   const getCookies = cookies();
   const token = getCookies.get("auto-zone-token")?.value || "";
 
-  console.log(token, "TOKEN");
   if (!token) throw new Error("The user is already logged out");
   const response = await fetch(`${process.env.API_URL}/api/Account/logout`, {
     method: "POST",
@@ -113,16 +94,4 @@ export async function logoutUser() {
   const data = await response.json();
 }
 
-export async function car() {
-  // const car = await fetch(
-  //   `https://mywarsha-gdgzdxdecghmfwa8.israelcentral-01.azurewebsites.net/api/cargenerations`,
-  //   {
-  //     headers: {
-  //       Authorization: `Bearer ${token.token}`,
-  //     },
-  //   }
-  // );
-  // const data = await car.json();
-  // console.log(car, "CARRRRR");
-  // console.log(data, "data");
-}
+export async function car() {}

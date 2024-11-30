@@ -21,29 +21,6 @@ import {
 import { CarInfoProps, ClientWithPhoneNumbers } from "@lib/types";
 import { DEFAULT_CAR_LOGO } from "@lib/constants";
 
-// const frameworks = [
-//   {
-//     value: "next.js",
-//     label: "Next.js",
-//   },
-//   {
-//     value: "sveltekit",
-//     label: "SvelteKit",
-//   },
-//   {
-//     value: "nuxt.js",
-//     label: "Nuxt.js",
-//   },
-//   {
-//     value: "remix",
-//     label: "Remix",
-//   },
-//   {
-//     value: "astro",
-//     label: "Astro",
-//   },
-// ];
-
 interface ClientsComboBoxProps {
   setValue: React.Dispatch<React.SetStateAction<number>>;
   value: number;
@@ -58,9 +35,7 @@ export const ClientsComboBox: React.FC<ClientsComboBoxProps> = ({
   disabled,
 }) => {
   const [open, setOpen] = React.useState(false);
-  // const [value, setValue] = React.useState(0);
   const selected = options.find((option) => option.id === value);
-  // console.log(options, "OP");
   return (
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
@@ -96,7 +71,6 @@ export const ClientsComboBox: React.FC<ClientsComboBoxProps> = ({
                     key={option.id}
                     value={option.name + phoneStirng + String(option.id)} // to avoid selecting two or more items that has the same name proprty.
                     onSelect={() => {
-                      // console.log(currentValue, "CCCC");
                       setValue(option.id === value ? 0 : option.id);
                       setOpen(false);
                     }}

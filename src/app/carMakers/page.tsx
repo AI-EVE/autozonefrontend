@@ -20,7 +20,6 @@ async function fetchCarMakers(): Promise<CarMakerBulk[]> {
     }
   );
   if (!response.ok) {
-    console.log(response.json());
     throw new Error("Failed to fetch car makers");
   }
   return response.json();

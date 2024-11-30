@@ -15,9 +15,6 @@ export async function getAllProductTypesAction() {
   });
 
   if (!response.ok) {
-    console.log(
-      "Something went wrong while trying to fetch product types data."
-    );
     return {
       data: null,
       error: "Something went wrong while trying to fetch product types data.",
@@ -43,7 +40,6 @@ export async function createProductTypeAction(productType: string) {
     if (response.status === 409) {
       return { data: null, error: (await response.json()).message };
     }
-    console.log("Something went wrong while creating the product type.");
     return { data: null, error: "Something went wrong!" };
   }
 
@@ -75,7 +71,6 @@ export async function editProductTypeAction({
     if (response.status === 409) {
       return { data: null, error: (await response.json()).message };
     }
-    console.log("Something went wrong while creating the product type.");
     return { data: null, error: "Something went wrong!" };
   }
 
@@ -100,7 +95,6 @@ export async function deleteProductTypeAction(id: string) {
     if (response.status === 409) {
       return { data: null, error: (await response.json()).message };
     }
-    console.log("Something went wrong while deleting the ProductType.");
     return { data: null, error: "Something went wrong!" };
   }
 
@@ -124,9 +118,6 @@ export async function getproducttypesCountAction() {
   );
 
   if (!response.ok) {
-    console.log(
-      "Something went wrong while trying to fetch product types count."
-    );
     return {
       data: null,
       error: "Something went wrong while trying to fetch product types count.",

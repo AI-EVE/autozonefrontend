@@ -66,7 +66,6 @@ function DeleteDialog({ carId }: { carId: string | undefined }) {
         ),
       });
     } catch (error: any) {
-      console.log(error);
       toast({
         variant: "destructive",
         title: "Something went wrong.",

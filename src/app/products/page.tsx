@@ -33,10 +33,6 @@ const Page = async ({ searchParams }: { searchParams: SearchParams }) => {
   const productBrandId = searchParams?.productBrandId ?? "";
   const isAvailable = searchParams?.isAvailable ?? "";
 
-  // if (productsError || categoriesError) {
-  //   return <div>Error loading data</div>;
-  // }
-
   const [categories, productBrands, brandTypes, count] = await Promise.all([
     getAllCategoriesAction(),
     getAllProductBrandsAction(),
@@ -54,7 +50,6 @@ const Page = async ({ searchParams }: { searchParams: SearchParams }) => {
   const { data: brandTypesData, error: brandTypesError } = brandTypes;
   const { data: countData, error: countError } = count;
 
-  console.log(countData, "DAASDADADADADA");
   const key =
     pageNumber +
     categoryId +

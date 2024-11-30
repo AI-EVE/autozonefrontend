@@ -19,7 +19,6 @@ export async function getAllCategoriesAction() {
   });
 
   if (!response.ok) {
-    console.log("Something went wrong while trying to fetch categories data.");
     return {
       data: null,
       error: "Something went wrong while trying to fetch categories data.",
@@ -46,7 +45,6 @@ export async function createCategoryAction(category: string) {
       return { data: null, error: (await response.json()).message };
     }
 
-    console.log("Something went wrong while creating the category.");
     return {
       data: null,
       error: "Something went wrong while creating the category.",
@@ -79,7 +77,6 @@ export async function editCategoryAction({
     if (response.status === 409) {
       return { data: null, error: (await response.json()).message };
     }
-    console.log("Something went wrong while creating the category.");
     return {
       data: null,
       error: "Something went wrong while creating the category.",
@@ -104,7 +101,6 @@ export async function deleteCarAction(id: string) {
     if (response.status === 409) {
       return { data: null, error: (await response.json()).message };
     }
-    console.log("Something went wrong while deleting the category.");
     return {
       data: null,
       error: "Something went wrong while deleting the category.",
@@ -128,7 +124,6 @@ export async function getCategoriesCountAction() {
   });
 
   if (!response.ok) {
-    console.log("Something went wrong while trying to fetch categories count.");
     return {
       data: null,
       error: "Something went wrong while trying to fetch categories count.",

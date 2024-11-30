@@ -72,7 +72,6 @@ const DeleteProductDialog = ({
       checkIfLastItem();
       queryClient.invalidateQueries(["productCount"]);
     } catch (error: any) {
-      console.log(error);
       toast({
         variant: "destructive",
         title: "Something went wrong.",

@@ -57,9 +57,6 @@ export async function getServiceFeesAction({
   });
 
   if (!response.ok) {
-    console.log(
-      "Something went wrong while trying to fetch Service fees data."
-    );
     return {
       data: null,
       error: "Something went wrong while trying to fetch Service fees data.",
@@ -95,7 +92,6 @@ export async function createServiceFeeAction(newFee: CreateProps) {
     if (response.status === 409) {
       return { data: null, error: (await response.json()).message };
     }
-    console.log("Something went wrong while creating the a restocking bill.");
     return { data: null, error: "Something went wrong!" };
   }
 
@@ -117,7 +113,6 @@ export async function getServiceFeesById(id: string) {
     },
   });
   if (!response.ok) {
-    console.log("Something went wrong while deleting the a restocking bill.");
     return { data: null, error: "Something went wrong!" };
   }
 
@@ -151,7 +146,6 @@ export async function editServiceFeeAction({
     if (response.status === 409) {
       return { data: null, error: (await response.json()).message };
     }
-    console.log("Something went wrong while editing the service fee.");
     return { data: null, error: "Something went wrong!" };
   }
 
@@ -176,7 +170,6 @@ export async function deleteServiceFeeAction(id: string) {
     if (response.status === 409) {
       return { data: null, error: (await response.json()).message };
     }
-    console.log("Something went wrong while deleting the a restocking bill.");
     return { data: null, error: "Something went wrong!" };
   }
   revalidateTag("services");
@@ -225,7 +218,6 @@ export async function getServiceFeesCountAction({
   });
 
   if (!response.ok) {
-    console.log("Something went wrong while trying to fetch Services count.");
     return {
       data: null,
       error: "Something went wrong while trying to fetch Services count.",

@@ -58,7 +58,6 @@ export async function getCarsAction({
   });
 
   if (!response.ok) {
-    console.log("Something went wrong while trying to fetch cars data.");
     return {
       data: null,
       error: "Something went wrong while trying to fetch cars data.",
@@ -100,7 +99,6 @@ export async function createCarAction({
   });
 
   if (!response.ok) {
-    console.log("Something went wrong while creating the car.");
     return {
       data: null,
       error: "Something went wrong while creating the car.",
@@ -129,25 +127,6 @@ export async function getCarByIdAction(id: string) {
 
   if (!token)
     return { data: null, error: "You are not authorized to make this action." };
-
-  // const response = await fetch(`${process.env.API_URL}/api/Cars/${id}`, {
-  //   method: "GET",
-  //   headers: {
-  //     Authorization: `Bearer ${token}`,
-  //     // "Content-type": "application/json",
-  //   },
-  // });
-
-  // if (!response.ok) {
-  //   console.log("Something went wrong while grabbing the car.");
-
-  //   return {
-  //     data: null,
-  //     error: "Something went wrong while grabbing the car.",
-  //   };
-  // }
-
-  // const car = (await response.json()) as CarItem;
 
   const { data, error } = await getClienttByIdAction(Number(id));
 
@@ -198,7 +177,6 @@ export async function editCarAction({
       if (response.status === 409) {
         return { data: null, error: (await response.json()).message };
       }
-      console.log("Something went wrong while creating the car.");
       return {
         data: null,
         error: "Something went wrong while creating the car.",
@@ -244,7 +222,6 @@ export async function deleteCarAction(id: string) {
     if (response.status === 409) {
       return { data: null, error: (await response.json()).message };
     }
-    console.log("Something went wrong while deleting the car.");
     return {
       data: null,
       error: "Something went wrong while deleting the car.",
@@ -304,7 +281,6 @@ export async function getCarsCountAction({
   });
 
   if (!response.ok) {
-    console.log("Something went wrong while trying to fetch cars count.");
     return {
       data: null,
       error: "Something went wrong while trying to fetch cars count.",
@@ -337,7 +313,6 @@ export async function getProductsImageAction(id: number) {
   );
 
   if (!response.ok) {
-    console.log("Something went wrong while grabbing the products.");
     return {
       data: null,
       error: "Something went wrong while grabbing the products.",
@@ -363,7 +338,6 @@ export async function createCarImageAction(formData: FormData) {
   });
 
   if (!response.ok) {
-    console.log("Had truble creating a product.");
     throw new Error("Had truble creating a product.");
   }
 }
@@ -390,7 +364,6 @@ export async function deleteCarImageAction(imageId: number) {
     if (response.status === 409) {
       return { data: null, error: (await response.json()).message };
     }
-    console.log("Something went wrong while grabbing the products.");
     return {
       data: null,
       error: "Something went wrong while grabbing the products.",
@@ -422,7 +395,6 @@ export async function getProductsImagesMainAction(id: number) {
   );
 
   if (!response.ok) {
-    console.log("Something went wrong while grabbing the products.");
     return {
       data: null,
       error: "Something went wrong while grabbing the products.",
@@ -431,7 +403,6 @@ export async function getProductsImagesMainAction(id: number) {
 
   const data = await response.json();
 
-  console.log(data, "DATA");
   return { data, error: "" };
 }
 
@@ -455,7 +426,6 @@ export async function deleteProductsImageMainAction(id: number) {
   );
 
   if (!response.ok) {
-    console.log("Something went wrong while grabbing the products.");
     return {
       data: null,
       error: "Something went wrong while grabbing the products.",
@@ -464,6 +434,5 @@ export async function deleteProductsImageMainAction(id: number) {
 
   const data = await response.json();
 
-  console.log(data, "DATA");
   return { data, error: "" };
 }

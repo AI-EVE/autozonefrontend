@@ -272,7 +272,6 @@ const ProductForm: React.FC<ProductFormProps> = ({
         ),
       });
     } catch (error: any) {
-      console.log(error);
       toast({
         variant: "destructive",
         title: "Something went wrong.",

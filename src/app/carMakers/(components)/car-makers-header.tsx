@@ -65,7 +65,6 @@ export default function CarMakersHeader() {
         setCarMakerLogo(null);
         setIsFormVisible(false);
         router.refresh();
-        console.log("Success:", result);
       } else if (response.status === 409) {
         toast({
           title: "Conflict",

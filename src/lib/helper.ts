@@ -27,9 +27,7 @@ const tokenData: TokenData = {
 };
 
 if (checkTokenExpiration(tokenData)) {
-  console.log("Token has expired");
 } else {
-  console.log("Token is not expired");
 }
 
 export const formatCurrency = (value: number) =>

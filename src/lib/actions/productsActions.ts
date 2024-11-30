@@ -64,9 +64,7 @@ export async function getProductsAction({
     },
   });
 
-  // console.log(response, "Product Response");
   if (!response.ok) {
-    console.log("Something went wrong while grabbing the products.");
     return {
       data: null,
       error: "Something went wrong while grabbing the products.",
@@ -96,7 +94,6 @@ export async function getProductByIdAction(id: string) {
   const response = await fetch(`${process.env.API_URL}/api/Product/${id}`);
 
   if (!response.ok) {
-    console.log("Something went wrong while grabbing the products.");
     return {
       data: null,
       error: "Something went wrong while grabbing the products.",
@@ -198,7 +195,6 @@ export async function editProductAction({
       }
     );
 
-    console.log(response);
     if (!response.ok) {
       if (response.status === 409) {
         return { data: null, error: (await response.json()).message };
@@ -305,7 +301,6 @@ export async function getProductsCountAction({
   });
 
   if (!response.ok) {
-    console.log("Something went wrong while grabbing the products count.");
     return {
       data: null,
       error: "Something went wrong while grabbing the products count.",
@@ -313,7 +308,6 @@ export async function getProductsCountAction({
   }
 
   const data = await response.json();
-  console.log(data, "ASA");
 
   return { data, error: "" };
 }
@@ -340,7 +334,6 @@ export async function getProductsImageAction(id: number) {
   );
 
   if (!response.ok) {
-    console.log("Something went wrong while grabbing the products.");
     return {
       data: null,
       error: "Something went wrong while grabbing the products.",
@@ -366,7 +359,6 @@ export async function createProductImageAction(formData: FormData) {
     body: formData,
   });
 
-  console.log(response);
   if (!response.ok) {
     if (response.status === 409) {
       return { data: null, error: (await response.json()).message };
@@ -427,7 +419,6 @@ export async function deleteProductsImageAction(imageId: number) {
     if (response.status === 409) {
       return { data: null, error: (await response.json()).message };
     }
-    console.log("Something went wrong while grabbing the products.");
     return {
       data: null,
       error: "Something went wrong while grabbing the products.",
@@ -457,7 +448,6 @@ export async function getProductsImagesMainAction(id: number) {
   );
 
   if (!response.ok) {
-    console.log("Something went wrong while grabbing the products.");
     return {
       data: null,
       error: "Something went wrong while grabbing the products.",
@@ -466,7 +456,6 @@ export async function getProductsImagesMainAction(id: number) {
 
   const data = await response.json();
 
-  console.log(data, "DATA");
   return { data, error: "" };
 }
 
@@ -504,7 +493,6 @@ export async function deleteProductsImageMainAction(id: number) {
   );
 
   if (!response.ok) {
-    console.log("Something went wrong while grabbing the products.");
     return {
       data: null,
       error: "Something went wrong while grabbing the products.",
@@ -513,6 +501,5 @@ export async function deleteProductsImageMainAction(id: number) {
 
   const data = await response.json();
 
-  console.log(data, "DATA");
   return { data, error: "" };
 }

@@ -61,8 +61,6 @@ export async function getServicesAction({
   });
 
   if (!response.ok) {
-    console.log("Something went wrong while trying to fetch Services data.");
-
     return {
       data: null,
       error: "Something went wrong while trying to fetch Services data.",
@@ -89,7 +87,6 @@ export async function createServiceAction(service: CreateService) {
     if (response.status === 409) {
       return { data: null, error: (await response.json()).message };
     }
-    console.log("Something went wrong while creating the a restocking bill.");
     return { data: null, error: "Something went wrong!" };
   }
 
@@ -125,7 +122,6 @@ export async function editServiceAction(serivceToEdit: EditProps) {
     if (response.status === 409) {
       return { data: null, error: (await response.json()).message };
     }
-    console.log("Something went wrong while creating the a restocking bill.");
     return { data: null, error: "Something went wrong!" };
   }
 
@@ -150,7 +146,6 @@ export async function deleteServiceAction(id: string) {
     if (response.status === 409) {
       return { data: null, error: (await response.json()).message };
     }
-    console.log("Something went wrong while deleting the a restocking bill.");
     return { data: null, error: "Something went wrong!" };
   }
   revalidateTag("services");
@@ -204,7 +199,6 @@ export async function getServicesCountAction({
   });
 
   if (!response.ok) {
-    console.log("Something went wrong while trying to fetch Services count.");
     return {
       data: null,
       error: "Something went wrong while trying to fetch Services count.",
@@ -238,10 +232,8 @@ export async function serviceDownloadPdf(id: number) {
   }
 
   const data = await res.body?.getReader().read();
-  // const blob = await res.blob();
-  // console.log(blob, "PDFFFF");
+
   const pdf = data ? JSON.stringify([data.value]) : null;
 
-  // console.log(pdf, "AAAAWWWWWWWWW ");
   return { data: pdf, error: null };
 }

@@ -199,25 +199,10 @@ function ProductsDialog({
     params.set("edit", filter);
     router.replace(`${pathname}?${params.toString()}`, { scroll: false });
   }
-  // console.log(hasReturnedValue, "SSSSSSS");
 
   productsArr = productsArr.filter((product) => {
-    // const price = new RegExp(priceValue, "i");
-    // const discount = new RegExp(discountValue, "i");
-    // const count = new RegExp(countValue, "i");
-    // const totalPriceAfterDiscount = new RegExp(
-    //   totalPriceAfterDiscountValue,
-    //   "i"
-    // );
     const name = new RegExp(nameValue, "i"); // 'i' for case-insensitive
     const hasReturned = new RegExp(String(hasReturnedValue), "i");
-
-    // let filterValue =
-    //   price.test(String(product.pricePerUnit)) &&
-    //   discount.test(String(product.discount)) &&
-    //   count.test(String(product.count)) &&
-    //   totalPriceAfterDiscount.test(String(product.totalPriceAfterDiscount)) &&
-    //   name.test(product.productName);
 
     let filterValue = name.test(product.productName);
     if (checked)
@@ -609,7 +594,6 @@ function EditReceipt({
   const handleEdit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      console.log("Setting isDeleting to true...");
       setIsDeleting(true);
 
       await editRestockingBillAction({
@@ -631,7 +615,6 @@ function EditReceipt({
         ),
       });
     } catch (error: any) {
-      console.log(error);
       setIsDeleting(false);
       toast({
         variant: "destructive",
@@ -640,8 +623,6 @@ function EditReceipt({
       });
     }
   };
-
-  // console.log(isEqual(billDate, dateOfOrder || new Date()));
 
   useEffect(() => {
     if (!dateOfOrder) {
@@ -834,8 +815,6 @@ function DeleteRestockingDialog({
                   ),
                 });
               } catch (error: any) {
-                console.log(error);
-
                 toast({
                   variant: "destructive",
                   title: "Faild to delete client's data",
@@ -938,8 +917,6 @@ function DeleteDialog({
                   ),
                 });
               } catch (error: any) {
-                console.log(error);
-
                 toast({
                   variant: "destructive",
                   title: "Faild to delete client's data",

@@ -57,9 +57,6 @@ export async function getServiceFeesAction({
   });
 
   if (!response.ok) {
-    console.log(
-      "Something went wrong while trying to fetch Service fees data."
-    );
     return {
       data: null,
       error: "Something went wrong while trying to fetch Service fees data.",
@@ -88,7 +85,6 @@ export async function createProductToSellAction(productToSell: ProductSold) {
     if (response.status === 409) {
       return { data: null, error: (await response.json()).message };
     }
-    console.log("Something went wrong while creating the a restocking bill.");
     return { data: null, error: "Something went wrong!" };
   }
 
@@ -116,7 +112,6 @@ export async function getProductToSellById(id: string) {
     }
   );
   if (!response.ok) {
-    console.log("Something went wrong while deleting the a restocking bill.");
     return { data: null, error: "Something went wrong!" };
   }
 
@@ -160,7 +155,6 @@ export async function editProductToSellAction({
     if (response.status === 409) {
       return { data: null, error: (await response.json()).message };
     }
-    console.log("Something went wrong while editing the service fee.");
     return { data: null, error: "Something went wrong!" };
   }
 
@@ -189,7 +183,6 @@ export async function deleteProductToSellAction(id: string) {
     if (response.status === 409) {
       return { data: null, error: (await response.json()).message };
     }
-    console.log("Something went wrong while deleting the a restocking bill.");
     return { data: null, error: "Something went wrong!" };
   }
   revalidateTag("services");
@@ -238,7 +231,6 @@ export async function getServiceFeesCountAction({
   });
 
   if (!response.ok) {
-    console.log("Something went wrong while trying to fetch Services count.");
     return {
       data: null,
       error: "Something went wrong while trying to fetch Services count.",

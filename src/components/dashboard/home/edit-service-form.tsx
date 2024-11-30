@@ -108,8 +108,8 @@ const EditServiceForm = ({
       if (isEqual) throw new Error("You haven't changed anything.");
       setIsLoading(true);
 
-     const {error} = await editServiceAction(editedData);
-     if(error) throw new Error(error)
+      const { error } = await editServiceAction(editedData);
+      if (error) throw new Error(error);
       setOpen("");
       toast({
         title: "Success!.",
@@ -118,8 +118,6 @@ const EditServiceForm = ({
         ),
       });
     } catch (error: any) {
-      console.log(error);
-
       toast({
         variant: "destructive",
         title: "Something went wrong while updating the service fee data.",

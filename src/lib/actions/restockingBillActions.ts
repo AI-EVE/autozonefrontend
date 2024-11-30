@@ -55,9 +55,6 @@ export async function getRestockingBillsAction({
   });
 
   if (!response.ok) {
-    console.log(
-      "Something went wrong while trying to fetch ProductsRestockingBills data."
-    );
     return {
       data: null,
       error:
@@ -87,7 +84,6 @@ export async function createRestockingBillAction(shopName: string) {
     if (response.status === 409) {
       return { data: null, error: (await response.json()).message };
     }
-    console.log("Something went wrong while creating the a restocking bill.");
     return { data: null, error: "Something went wrong!" };
   }
 
@@ -125,7 +121,6 @@ export async function editRestockingBillAction({
     if (response.status === 409) {
       return { data: null, error: (await response.json()).message };
     }
-    console.log("Something went wrong while creating the a restocking bill.");
     return { data: null, error: "Something went wrong!" };
   }
 
@@ -153,7 +148,6 @@ export async function deleteRestockingBillAction(id: string) {
     if (response.status === 409) {
       return { data: null, error: (await response.json()).message };
     }
-    console.log("Something went wrong while deleting the a restocking bill.");
     return { data: null, error: "Something went wrong!" };
   }
   revalidateTag("restockingBills");
@@ -200,9 +194,6 @@ export async function getProductsRestockingBillsCountAction({
   });
 
   if (!response.ok) {
-    console.log(
-      "Something went wrong while trying to fetch ProductsRestockingBills count."
-    );
     return {
       data: null,
       error:

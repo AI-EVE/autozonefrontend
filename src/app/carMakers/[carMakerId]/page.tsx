@@ -101,7 +101,6 @@ export default function Page({ params: { carMakerId } }: Props) {
             description: "Failed to fetch the car maker.",
             variant: "destructive",
           });
-          console.log(response);
           router.back();
         }
         return response.json();
@@ -175,7 +174,6 @@ export default function Page({ params: { carMakerId } }: Props) {
         });
         setCarMakerName("");
         setCarMakerLogo(null);
-        console.log("Success:", result);
         setCarMakerResponseFull((oldState) => ({ ...oldState, ...result }));
 
         // router.refresh();

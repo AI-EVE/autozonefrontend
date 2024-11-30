@@ -21,9 +21,6 @@ export async function getAllCarGenerationsAction(page?: number) {
   });
 
   if (!response.ok) {
-    console.log(
-      "Something went wrong while trying to fetch car generations data."
-    );
     return {
       data: null,
       error: "Something went wrong while trying to fetch car generations data.",
@@ -57,7 +54,6 @@ export async function createCarGenerationAction(generations: CarGeneration) {
     if (response.status === 409) {
       return { data: null, error: (await response.json()).message };
     }
-    console.log("Something went wrong while creating the car generation.");
     return { data: null, error: "Something went wrong!" };
   }
 
@@ -89,7 +85,6 @@ export async function editCarGenerationAction({
     if (response.status === 409) {
       return { data: null, error: (await response.json()).message };
     }
-    console.log("Something went wrong while creating the car generation.");
     return { data: null, error: "Something went wrong!" };
   }
 
@@ -142,9 +137,6 @@ export async function getCarGenerationCountAction() {
   );
 
   if (!response.ok) {
-    console.log(
-      "Something went wrong while trying to fetch car generations data."
-    );
     return {
       data: null,
       error: "Something went wrong while trying to fetch car generations data.",

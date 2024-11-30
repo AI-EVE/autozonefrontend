@@ -17,9 +17,6 @@ export async function getAllProductBrandsAction() {
   });
 
   if (!response.ok) {
-    console.log(
-      "Something went wrong while trying to fetch product brands data."
-    );
     return {
       data: null,
       error: "Something went wrong while trying to fetch product brands data.",
@@ -45,7 +42,6 @@ export async function createProductBrandAction(productBrand: string) {
     if (response.status === 409) {
       return { data: null, error: (await response.json()).message };
     }
-    console.log("Something went wrong while creating the product brand.");
     return { data: null, error: "Something went wrong!" };
   }
 
@@ -77,7 +73,6 @@ export async function editProductBrandAction({
     if (response.status === 409) {
       return { data: null, error: (await response.json()).message };
     }
-    console.log("Something went wrong while creating the product brand.");
     return { data: null, error: "Something went wrong!" };
   }
 
@@ -102,7 +97,6 @@ export async function deleteProductBrandAction(id: string) {
     if (response.status === 409) {
       return { data: null, error: (await response.json()).message };
     }
-    console.log("Something went wrong while deleting the ProductBrand.");
     return { data: null, error: "Something went wrong!" };
   }
 
@@ -126,9 +120,6 @@ export async function getProductBrandsCountAction() {
   );
 
   if (!response.ok) {
-    console.log(
-      "Something went wrong while trying to fetch product brands count."
-    );
     return {
       data: null,
       error: "Something went wrong while trying to fetch product brands count.",

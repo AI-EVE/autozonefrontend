@@ -53,9 +53,7 @@ export async function getPhonesAction({
     },
   });
 
-  // console.log(response, "Product Response");
   if (!response.ok) {
-    console.log("Something went wrong while grabbing the products.");
     return {
       data: null,
       error: "Something went wrong while grabbing the products.",
@@ -81,7 +79,6 @@ export async function getProductByIdAction(id: number) {
   });
 
   if (!response.ok) {
-    console.log("Something went wrong while grabbing the products.");
     return {
       data: null,
       error: "Something went wrong while grabbing the products.",
@@ -111,7 +108,6 @@ export async function createPhoneNumAction(data: {
     body: JSON.stringify(data),
   });
 
-  console.log(response);
   if (!response.ok) {
     if (response.status === 409) {
       throw new Error((await response.json()).message);
@@ -146,7 +142,6 @@ export async function createPhoneNumsBulkAction(
     body: JSON.stringify(data),
   });
 
-  console.log(response);
   if (!response.ok) {
     if (response.status === 409) {
       return { data: null, error: (await response.json()).message };
@@ -252,7 +247,6 @@ export async function getPhonesCountAction({
   });
 
   if (!response.ok) {
-    console.log("Something went wrong while grabbing the products count.");
     return {
       data: null,
       error: "Something went wrong while grabbing the products count.",

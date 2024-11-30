@@ -551,8 +551,6 @@ function DeleteProSold({
                   ),
                 });
               } catch (error: any) {
-                console.log(error);
-
                 toast({
                   variant: "destructive",
                   title: "Faild to delete client's data",

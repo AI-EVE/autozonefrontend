@@ -87,7 +87,6 @@ const ServicesForm = ({
   const router = useRouter();
   const pathname = usePathname();
   const serivceParam = searchParam.get("service");
-  console.log(!isNull(serivceParam) ? true : false, "SSSSS");
   const [isOpen, setIsOpen] = useState(!isNull(serivceParam) ? true : false);
   const [currTab, setCurrTab] = useState("item-1");
   const { toast } = useToast();

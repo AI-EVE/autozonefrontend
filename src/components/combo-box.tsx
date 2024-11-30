@@ -61,9 +61,8 @@ export const ComboBox: React.FC<ComboBoxProps> = ({
               {options?.map((option) => (
                 <CommandItem
                   key={option.id}
-                  value={option.name + String(option.id)} // to avoid selecting two or more items that has the same name proprty.
+                  value={option.name + String(option.id)}
                   onSelect={() => {
-                    // console.log(currentValue, "CCCC");
                     setValue?.(option.id === value ? 0 : option.id);
                     if (paramName) {
                       setParam?.(option.id, paramName, value);

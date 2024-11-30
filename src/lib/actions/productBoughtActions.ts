@@ -76,9 +76,7 @@ export async function getProductsBoughtAction({
     },
   });
 
-  // console.log(response, "Product Response");
   if (!response.ok) {
-    console.log("Something went wrong while grabbing the products.");
     return {
       data: null,
       error: "Something went wrong while grabbing the products.",
@@ -117,7 +115,6 @@ export async function getProductBoughtByIdAction(id: string) {
   );
 
   if (!response.ok) {
-    console.log("Something went wrong while grabbing the products.");
     return {
       data: null,
       error: "Something went wrong while grabbing the products.",
@@ -170,7 +167,6 @@ export async function createProductBoughtBulkAction({
     }
   );
 
-  console.log(response);
   if (!response.ok) {
     if (response.status === 409) {
       return { data: null, error: (await response.json()).message };
@@ -222,7 +218,6 @@ export async function editProductBoughtAction({
     }
   );
 
-  console.log(response);
   if (!response.ok) {
     if (response.status === 409) {
       return { data: null, error: (await response.json()).message };
@@ -242,7 +237,6 @@ export async function editProductBoughtAction({
 export async function deleteProductsBoughtByIdAction(id: number) {
   //Product?PageNumber=1&PageSize=10
 
-  console.log(id, "PROO TO DELETE");
   const token = getToken();
 
   if (!token) return redirect("/login");
@@ -321,7 +315,6 @@ export async function getProductsCountAction({
   });
 
   if (!response.ok) {
-    console.log("Something went wrong while grabbing the products count.");
     return {
       data: null,
       error: "Something went wrong while grabbing the products count.",
@@ -355,7 +348,6 @@ export async function getProductsImageAction(id: number) {
   );
 
   if (!response.ok) {
-    console.log("Something went wrong while grabbing the products.");
     return {
       data: null,
       error: "Something went wrong while grabbing the products.",
@@ -381,7 +373,6 @@ export async function createProductImageAction(formData: FormData) {
     body: formData,
   });
 
-  console.log(response);
   if (!response.ok) {
     if (response.status === 409) {
       return { data: null, error: (await response.json()).message };
@@ -417,7 +408,6 @@ export async function deleteProductsImageAction(imageId: number) {
     if (response.status === 409) {
       return { data: null, error: (await response.json()).message };
     }
-    console.log("Something went wrong while grabbing the products.");
     return {
       data: null,
       error: "Something went wrong while grabbing the products.",
@@ -449,7 +439,6 @@ export async function getProductsImagesMainAction(id: number) {
   );
 
   if (!response.ok) {
-    console.log("Something went wrong while grabbing the products.");
     return {
       data: null,
       error: "Something went wrong while grabbing the products.",
@@ -458,7 +447,6 @@ export async function getProductsImagesMainAction(id: number) {
 
   const data = await response.json();
 
-  console.log(data, "DATA");
   return { data, error: "" };
 }
 
@@ -509,7 +497,6 @@ export async function deleteProductsImageMainAction(id: number) {
   );
 
   if (!response.ok) {
-    console.log("Something went wrong while grabbing the products.");
     return {
       data: null,
       error: "Something went wrong while grabbing the products.",
@@ -518,6 +505,5 @@ export async function deleteProductsImageMainAction(id: number) {
 
   const data = await response.json();
 
-  console.log(data, "DATA");
   return { data, error: "" };
 }
