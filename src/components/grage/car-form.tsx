@@ -44,6 +44,7 @@ import { ModelCombobox } from "@components/model-combobox";
 const CarForm = ({
   useParams,
   carToEdit,
+  clientId,
   carGenerations,
   clients,
   carMakers,
@@ -52,6 +53,7 @@ const CarForm = ({
 }: {
   useParams?: boolean;
   carToEdit?: CarItem;
+  clientId?: number;
   carGenerations: CarGenerationProps[];
   carMakers: CarMaker[];
   clients: ClientWithPhoneNumbers[];
@@ -92,7 +94,7 @@ const CarForm = ({
     chassisNumber: carToEdit?.chassisNumber || "adasda",
     motorNumber: carToEdit?.motorNumber || "asddss",
     notes: carToEdit?.notes || "asdasd",
-    clientId: carToEdit?.clientId || 0,
+    clientId: clientId || 0,
     carGenerationId: carToEdit?.carInfo.carGeneration.id || 0,
     images: [],
   };

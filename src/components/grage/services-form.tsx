@@ -225,6 +225,7 @@ const ServicesForm = ({
       });
     }
   }
+
   return (
     <DialogComponent open={isOpen} onOpenChange={handleClose}>
       {open === undefined && (
@@ -281,7 +282,9 @@ const ServicesForm = ({
                         />
                       </FormControl>
 
-                      <FormDescription>Enter car&apos;s color.</FormDescription>
+                      <FormDescription>
+                        Enter which client the service was provided to.
+                      </FormDescription>
                       <FormMessage />
                     </FormItem>
 
@@ -316,7 +319,7 @@ const ServicesForm = ({
                             />
                           </FormControl>
                           <FormDescription>
-                            Enter Service&apos;s status.
+                            Enter service status.
                           </FormDescription>
                           <FormMessage />
                         </FormItem>
@@ -334,11 +337,13 @@ const ServicesForm = ({
                         <FormControl>
                           <Textarea
                             disabled={isLoading}
-                            placeholder="Information about the service..."
+                            placeholder="Car information..."
                             {...field}
                           />
                         </FormControl>
-                        <FormDescription>Enter Note if needed.</FormDescription>
+                        <FormDescription>
+                          Enter any additional details about the service.
+                        </FormDescription>
                         <FormMessage />
                       </FormItem>
                     )}
@@ -419,27 +424,6 @@ const ServicesForm = ({
                               <FormField
                                 disabled={isLoading}
                                 control={form.control}
-                                name={`serviceFees.${i}.categoryId`}
-                                render={({ field }) => (
-                                  <FormItem className=" w-full  mb-auto">
-                                    <FormLabel>Category</FormLabel>
-                                    <FormControl>
-                                      <ComboBox
-                                        setValue={field.onChange}
-                                        value={field.value}
-                                        options={categories}
-                                      />
-                                    </FormControl>
-                                    <FormDescription>
-                                      Enter a Category.
-                                    </FormDescription>
-                                    <FormMessage />
-                                  </FormItem>
-                                )}
-                              />
-                              <FormField
-                                disabled={isLoading}
-                                control={form.control}
                                 name={`serviceFees.${i}.price`}
                                 render={({ field }) => (
                                   <FormItem className="  w-full mb-auto ">
@@ -455,12 +439,12 @@ const ServicesForm = ({
                                             field.onChange(Number(inputValue));
                                           }
                                         }}
-                                        placeholder="Additional notes..."
+                                        placeholder="Service price..."
                                         // {...field}
                                       />
                                     </FormControl>
                                     <FormDescription>
-                                      Enter the Cost
+                                      Enter service fee price.
                                     </FormDescription>
                                     <FormMessage />
                                   </FormItem>
@@ -472,7 +456,7 @@ const ServicesForm = ({
                                 name={`serviceFees.${i}.discount`}
                                 render={({ field }) => (
                                   <FormItem className="  w-full mb-auto">
-                                    <FormLabel>Enter Discount</FormLabel>
+                                    <FormLabel>Discount</FormLabel>
                                     <FormControl>
                                       <Input
                                         type="text"
@@ -484,11 +468,35 @@ const ServicesForm = ({
                                             field.onChange(Number(inputValue));
                                           }
                                         }}
-                                        placeholder="Additional notes..."
+                                        placeholder="Service discount..."
                                         // {...field}
                                       />
                                     </FormControl>
-                                    <FormDescription>Discount.</FormDescription>
+                                    <FormDescription>
+                                      Enter the service fee discount.
+                                    </FormDescription>
+                                    <FormMessage />
+                                  </FormItem>
+                                )}
+                              />
+                              <FormField
+                                disabled={isLoading}
+                                control={form.control}
+                                name={`serviceFees.${i}.categoryId`}
+                                render={({ field }) => (
+                                  <FormItem className=" w-full  mb-auto">
+                                    <FormLabel>Category</FormLabel>
+                                    <FormControl>
+                                      <ComboBox
+                                        setValue={field.onChange}
+                                        value={field.value}
+                                        options={categories}
+                                      />
+                                    </FormControl>
+                                    <FormDescription>
+                                      Chose the relievant category to the
+                                      service fee provided.
+                                    </FormDescription>
                                     <FormMessage />
                                   </FormItem>
                                 )}
@@ -504,12 +512,13 @@ const ServicesForm = ({
                                   <FormControl>
                                     <Textarea
                                       disabled={isLoading}
-                                      placeholder="Additional information about the fee..."
+                                      placeholder="Note.."
                                       {...field}
                                     />
                                   </FormControl>
                                   <FormDescription>
-                                    Additional infromation if needed.
+                                    Enter any additional details about the
+                                    service fee.
                                   </FormDescription>
                                   <FormMessage />
                                 </FormItem>
@@ -576,211 +585,206 @@ const ServicesForm = ({
                 <AccordionContent className=" px-1 space-y-5">
                   {/* products to sell starts */}
                   <div className=" py-10 space-y-8">
-                    {/* <h2 className=" font-semibold text-3xl">Service fees</h2> */}
-                    {/* <div className="   flex  items-center py-2  justify-between">
-                      <h2 className=" font-semibold text-2xl xs:text-3xl">
-                        Products sold
-                      </h2>
-                      <Button
-                        size="sm"
-                        variant="secondary"
-                        type="button"
-                        className=" text-xs"
-                        onClick={() =>
-                          appendProduct({
-                            pricePerUnit: 0,
-                            discount: 0,
-                            count: 0,
-                            productId: 0,
-                            note: "",
-                          })
-                        }
-                      >
-                        ADD PRODUCT SOLD
-                      </Button>
-                    </div> */}
-
                     <ul className=" space-y-10">
-                      {productsToSellFields.map((item, i) => (
-                        <motion.li
-                          initial={{
-                            opacity: 0.2,
-                            y: -20,
-                          }}
-                          animate={{
-                            opacity: 1,
-                            y: 0,
-                            transition: { duration: 0.6, type: "spring" },
-                          }}
-                          exit={{
-                            opacity: 0.2,
-                            y: -150,
-                            transition: { duration: 0.1, type: "spring" },
-                          }}
-                          key={item.id}
-                          className=" space-y-6"
-                        >
-                          <h2>{i + 1}.</h2>
-                          <div
-                            className={cn(
-                              "space-y-4 border p-3 rounded-xl  relative "
-                            )}
+                      {productsToSellFields.map((item, i) => {
+                        return (
+                          <motion.li
+                            initial={{
+                              opacity: 0.2,
+                              y: -20,
+                            }}
+                            animate={{
+                              opacity: 1,
+                              y: 0,
+                              transition: { duration: 0.6, type: "spring" },
+                            }}
+                            exit={{
+                              opacity: 0.2,
+                              y: -150,
+                              transition: { duration: 0.1, type: "spring" },
+                            }}
+                            key={item.id}
+                            className=" space-y-6"
                           >
-                            <button
-                              onClick={() => {
-                                removeProduct(i);
-                              }}
-                              className="absolute top-5 right-5 rounded-sm outline-none opacity-70 transition-opacity hover:opacity-100 focus:outline-none disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground  "
-                              type="button"
+                            <h2>{i + 1}.</h2>
+                            <div
+                              className={cn(
+                                "space-y-4 border p-3 rounded-xl  relative "
+                              )}
                             >
-                              <Cross2Icon className="h-4 w-4" />
-                            </button>
-                            <FormField
-                              disabled={isLoading}
-                              control={form.control}
-                              name={`productsToSell.${i}.productId`}
-                              render={({ field }) => (
-                                <FormItem className=" w-full mb-auto">
-                                  <FormLabel>Product</FormLabel>
-                                  <FormControl>
-                                    <ProductsComboBox
-                                      setValue={field.onChange}
-                                      value={field.value}
-                                      options={products}
-                                    />
-                                  </FormControl>
-                                  <FormDescription>
-                                    Select a product.
-                                  </FormDescription>
-                                  <FormMessage />
-                                </FormItem>
-                              )}
-                            />
-                            <div className=" flex  flex-col gap-2  sm:flex-row  ">
+                              <button
+                                onClick={() => {
+                                  removeProduct(i);
+                                }}
+                                className="  absolute  top-5 right-5 rounded-sm outline-none    opacity-70 transition-opacity hover:opacity-100 focus:outline-none disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground  "
+                                type="button"
+                              >
+                                <Cross2Icon className="h-4 w-4" />
+                              </button>
                               <FormField
                                 disabled={isLoading}
                                 control={form.control}
-                                name={`productsToSell.${i}.pricePerUnit`}
+                                name={`productsToSell.${i}.productId`}
                                 render={({ field }) => (
-                                  <FormItem className="  w-full mb-auto ">
-                                    <FormLabel>Price per unit</FormLabel>
+                                  <FormItem className=" w-full mb-auto">
+                                    <FormLabel>Product</FormLabel>
                                     <FormControl>
-                                      <Input
-                                        type="text"
-                                        disabled={isLoading}
-                                        value={field.value}
-                                        onChange={(e) => {
-                                          const inputValue = e.target.value;
-                                          if (/^\d*$/.test(inputValue)) {
-                                            field.onChange(Number(inputValue));
+                                      <ProductsComboBox
+                                        setValue={(value) => {
+                                          field.onChange(value);
+                                          if (value) {
+                                            const product = products.find(
+                                              (product) => product.id === value
+                                            );
+                                            if (product)
+                                              form.setValue(
+                                                `productsToSell.${i}.pricePerUnit`,
+                                                product.salePrice
+                                              );
                                           }
                                         }}
-                                        placeholder="Additional notes..."
-                                        // {...field}
+                                        value={field.value}
+                                        options={products}
                                       />
                                     </FormControl>
                                     <FormDescription>
-                                      Enter the cost of each unit.
+                                      Enter which product you are selling.
                                     </FormDescription>
                                     <FormMessage />
                                   </FormItem>
                                 )}
                               />
-                              <FormField
-                                disabled={isLoading}
-                                control={form.control}
-                                name={`productsToSell.${i}.discount`}
-                                render={({ field }) => (
-                                  <FormItem className="  w-full mb-auto">
-                                    <FormLabel>Discount per unit</FormLabel>
-                                    <FormControl>
-                                      <Input
-                                        type="text"
-                                        disabled={isLoading}
-                                        value={field.value}
-                                        onChange={(e) => {
-                                          const inputValue = e.target.value;
-                                          if (/^\d*$/.test(inputValue)) {
-                                            field.onChange(Number(inputValue));
-                                          }
-                                        }}
-                                        placeholder="Additional notes..."
-                                        // {...field}
-                                      />
-                                    </FormControl>
-                                    <FormDescription>
-                                      Enter the discount of each unit.
-                                    </FormDescription>
-                                    <FormMessage />
-                                  </FormItem>
-                                )}
-                              />
-                              <FormField
-                                disabled={isLoading}
-                                control={form.control}
-                                name={`productsToSell.${i}.count`}
-                                render={({ field }) => (
-                                  <FormItem className=" w-full  mb-auto">
-                                    <FormLabel>Count</FormLabel>
-                                    <FormControl>
-                                      <Input
-                                        type="text"
-                                        disabled={isLoading}
-                                        value={field.value}
-                                        onChange={(e) => {
-                                          const inputValue = e.target.value;
-                                          if (/^\d*$/.test(inputValue)) {
-                                            field.onChange(Number(inputValue));
-                                          }
-                                        }}
-                                        placeholder="Additional notes..."
-                                        // {...field}
-                                      />
-                                    </FormControl>
-                                    <FormDescription>
-                                      Enter the amount.
-                                    </FormDescription>
-                                    <FormMessage />
-                                  </FormItem>
-                                )}
-                              />
-                            </div>
+                              <div className=" flex  flex-col gap-2  sm:flex-row  ">
+                                <FormField
+                                  disabled={isLoading}
+                                  control={form.control}
+                                  name={`productsToSell.${i}.pricePerUnit`}
+                                  render={({ field }) => (
+                                    <FormItem className="  w-full mb-auto ">
+                                      <FormLabel>Price per unit</FormLabel>
+                                      <FormControl>
+                                        <Input
+                                          type="text"
+                                          disabled={isLoading}
+                                          value={field.value}
+                                          onChange={(e) => {
+                                            const inputValue = e.target.value;
+                                            if (/^\d*$/.test(inputValue)) {
+                                              field.onChange(
+                                                Number(inputValue)
+                                              );
+                                            }
+                                          }}
+                                          placeholder="Price per unit..."
+                                        />
+                                      </FormControl>
+                                      <FormDescription>
+                                        Enter the cost of each unit.
+                                      </FormDescription>
+                                      <FormMessage />
+                                    </FormItem>
+                                  )}
+                                />
+                                <FormField
+                                  disabled={isLoading}
+                                  control={form.control}
+                                  name={`productsToSell.${i}.discount`}
+                                  render={({ field }) => (
+                                    <FormItem className="  w-full mb-auto">
+                                      <FormLabel>Discount per unit</FormLabel>
+                                      <FormControl>
+                                        <Input
+                                          type="text"
+                                          disabled={isLoading}
+                                          value={field.value}
+                                          onChange={(e) => {
+                                            const inputValue = e.target.value;
+                                            if (/^\d*$/.test(inputValue)) {
+                                              field.onChange(
+                                                Number(inputValue)
+                                              );
+                                            }
+                                          }}
+                                          placeholder="Discount per unit..."
+                                          // {...field}
+                                        />
+                                      </FormControl>
+                                      <FormDescription>
+                                        Enter the discount per unit.
+                                      </FormDescription>
+                                      <FormMessage />
+                                    </FormItem>
+                                  )}
+                                />
+                                <FormField
+                                  disabled={isLoading}
+                                  control={form.control}
+                                  name={`productsToSell.${i}.count`}
+                                  render={({ field }) => (
+                                    <FormItem className=" w-full  mb-auto">
+                                      <FormLabel>Count</FormLabel>
+                                      <FormControl>
+                                        <Input
+                                          type="text"
+                                          disabled={isLoading}
+                                          value={field.value}
+                                          onChange={(e) => {
+                                            const inputValue = e.target.value;
+                                            if (/^\d*$/.test(inputValue)) {
+                                              field.onChange(
+                                                Number(inputValue)
+                                              );
+                                            }
+                                          }}
+                                          placeholder="Units to be sold..."
+                                          // {...field}
+                                        />
+                                      </FormControl>
+                                      <FormDescription>
+                                        Enter the amount of units sold.
+                                      </FormDescription>
+                                      <FormMessage />
+                                    </FormItem>
+                                  )}
+                                />
+                              </div>
 
-                            <FormField
-                              disabled={isLoading}
-                              control={form.control}
-                              name={`productsToSell.${i}.note`}
-                              render={({ field }) => (
-                                <FormItem className=" w-full mb-auto">
-                                  <FormLabel>Notes</FormLabel>
-                                  <FormControl>
-                                    <Textarea
-                                      disabled={isLoading}
-                                      placeholder="Additional information about the product..."
-                                      {...field}
-                                    />
-                                  </FormControl>
-                                  <FormDescription>
-                                    Additional infromation if needed.
-                                  </FormDescription>
-                                  <FormMessage />
-                                </FormItem>
-                              )}
-                            />
-
-                            <div>
-                              Total amount spent:
-                              <span className=" ml-3">
-                                {formatCurrency(
-                                  (productsToSell[i]?.pricePerUnit -
-                                    productsToSell[i]?.discount) *
-                                    productsToSell[i]?.count
+                              <FormField
+                                disabled={isLoading}
+                                control={form.control}
+                                name={`productsToSell.${i}.note`}
+                                render={({ field }) => (
+                                  <FormItem className=" w-full mb-auto">
+                                    <FormLabel>Notes</FormLabel>
+                                    <FormControl>
+                                      <Textarea
+                                        disabled={isLoading}
+                                        placeholder="Note..."
+                                        {...field}
+                                      />
+                                    </FormControl>
+                                    <FormDescription>
+                                      Additional Details about product sold
+                                    </FormDescription>
+                                    <FormMessage />
+                                  </FormItem>
                                 )}
-                              </span>
+                              />
+
+                              <div>
+                                Total amount spent:
+                                <span className=" ml-3">
+                                  {formatCurrency(
+                                    (productsToSell[i]?.pricePerUnit -
+                                      productsToSell[i]?.discount) *
+                                      productsToSell[i]?.count
+                                  )}
+                                </span>
+                              </div>
                             </div>
-                          </div>
-                        </motion.li>
-                      ))}
+                          </motion.li>
+                        );
+                      })}
 
                       <Button
                         size="sm"
