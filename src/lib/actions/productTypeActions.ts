@@ -2,16 +2,16 @@
 import { getToken } from "@lib/helper";
 import { redirect } from "next/navigation";
 export async function getAllProductTypesAction() {
-  // const token = getToken();
+  const token = getToken();
 
-  // if (!token)
-  //   return { data: null, error: "You are not authorized to make this action." };
+  if (!token)
+    return { data: null, error: "You are not authorized to make this action." };
   const response = await fetch(`${process.env.API_URL}/api/producttypes`, {
     method: "GET",
     cache: "no-cache",
-    // headers: {
-    //   Authorization: `Bearer ${token}`,
-    // },
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
   });
 
   if (!response.ok) {

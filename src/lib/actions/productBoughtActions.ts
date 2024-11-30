@@ -331,19 +331,19 @@ export async function getProductsCountAction({
 export async function getProductsImageAction(id: number) {
   //Product?PageNumber=1&PageSize=10
 
-  // const token = getToken();
+  const token = getToken();
 
-  // if (!token)
-  //   return { data: null, error: "You are not authorized to make this action." };
+  if (!token)
+    return { data: null, error: "You are not authorized to make this action." };
 
   const response = await fetch(
     `${process.env.API_URL}/api/ProductImages/${id}`,
     {
       method: "GET",
-      // headers: {
-      //   Authorization: `Bearer ${token}`,
-      //   // "Content-type": "application/json",
-      // },
+      headers: {
+        Authorization: `Bearer ${token}`,
+        // "Content-type": "application/json",
+      },
     }
   );
 

@@ -35,10 +35,11 @@ export async function getProductsAction({
 }: GetProdcutsActionProps) {
   //Product?PageNumber=1&PageSize=10
   // /api/Product?Name=test&CategoryId=1&ProductTypeId=1&ProductBrandId=1&IsAvailable=true&PageNumber=1&PageSize=10
-  // const token = getToken();
+  const token = getToken();
+  console.log(token, "token");
 
-  // if (!token)
-  //   return { data: null, error: "You are not authorized to make this action." };
+  if (!token)
+    return { data: null, error: "You are not authorized to make this action." };
 
   let query = `${process.env.API_URL}/api/Product?`;
 
@@ -56,10 +57,10 @@ export async function getProductsAction({
 
   const response = await fetch(query, {
     method: "GET",
-    // headers: {
-    //   Authorization: `Bearer ${token}`,
-    //   "Content-type": "application/json",
-    // },
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "Content-type": "application/json",
+    },
     next: {
       // revalidate: 3600,
       tags: ["products"],
@@ -72,19 +73,24 @@ export async function getProductsAction({
       error: "Something went wrong while grabbing the products.",
     };
   }
-
   const data = (await response.json()) as Product[];
 
   return { data: data, error: "" };
 }
 
 export async function getProductByIdAction(id: string) {
-  // const token = getToken();
+  const token = getToken();
 
-  // if (!token)
-  //   return { data: null, error: "You are not authorized to make this action." };
+  if (!token)
+    return { data: null, error: "You are not authorized to make this action." };
 
-  const response = await fetch(`${process.env.API_URL}/api/Product/${id}`);
+  const response = await fetch(`${process.env.API_URL}/api/Product/${id}`, {
+    method: "GET",
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "Content-type": "application/json",
+    },
+  });
 
   if (!response.ok) {
     return {
@@ -182,7 +188,7 @@ export async function editProductAction({
         method: "PUT",
         headers: {
           Authorization: `Bearer ${token}`,
-          "Content-Type": "application/json",
+          // "Content-Type": "application/json",
         },
         body: JSON.stringify(productToEdit),
       }
@@ -310,19 +316,19 @@ export async function getProductsCountAction({
 export async function getProductsImageAction(id: number) {
   //Product?PageNumber=1&PageSize=10
 
-  // const token = getToken();
+  const token = getToken();
 
-  // if (!token)
-  //   return { data: null, error: "You are not authorized to make this action." };
+  if (!token)
+    return { data: null, error: "You are not authorized to make this action." };
 
   const response = await fetch(
     `${process.env.API_URL}/api/ProductImages/${id}`,
     {
       method: "GET",
-      // headers: {
-      //   Authorization: `Bearer ${token}`,
-      //   // "Content-type": "application/json",
-      // },
+      headers: {
+        Authorization: `Bearer ${token}`,
+        // "Content-type": "application/json",
+      },
     }
   );
 
