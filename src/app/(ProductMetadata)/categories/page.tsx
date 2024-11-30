@@ -33,7 +33,12 @@ export default function Page() {
     setLoading(true);
 
     fetch(
-      `https://mywarsha-gdgzdxdecghmfwa8.israelcentral-01.azurewebsites.net/api/categories`
+      `https://mywarsha-gdgzdxdecghmfwa8.israelcentral-01.azurewebsites.net/api/categories`,
+      {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("auto-zone-token")}`,
+        },
+      }
     )
       .then(async (response) => {
         if (response.ok) {
