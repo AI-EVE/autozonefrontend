@@ -62,7 +62,7 @@ const ProductView = async ({ params }: { params: Params }) => {
           <ImageOff className=" w-10 h-10" /> No images.
         </div>
       )}
-      <div className=" text-xs  text-muted-foreground my-4 text-right px-3">
+      <div className=" text-2xl my-4 text-right px-3">
         {productData.stock ? (
           <i>
             Stock: <span>{productData.stock}</span>

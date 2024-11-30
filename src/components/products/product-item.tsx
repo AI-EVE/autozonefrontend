@@ -7,6 +7,7 @@ import { formatCurrency } from "@lib/helper";
 import { ProdcutAction } from "./product-actions";
 import Link from "next/link";
 import { ImageOff } from "lucide-react";
+import { Button } from "@components/ui/button";
 
 const ProductItem = async ({
   product,
@@ -56,6 +57,7 @@ const ProductItem = async ({
           <h2 className=" text-sm text-muted-foreground break-words line-clamp-2">
             {product.description}
           </h2>
+
           <div className=" flex justify-between  items-center text-xs">
             <span className=" text-green-500 dark:text-green-600">
               {formatCurrency(product.salePrice)}
@@ -78,6 +80,11 @@ const ProductItem = async ({
               />
             </div>
           </div>
+          <Link href={`/products/${product.id}?edit=open`}>
+            <Button className="w-1/2" variant="secondary" size="sm">
+              Edit
+            </Button>
+          </Link>
         </div>
       </Link>
     </li>

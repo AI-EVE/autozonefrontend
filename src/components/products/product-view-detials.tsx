@@ -29,7 +29,7 @@ const ProdcutViewDetials = ({
       </h1>
       <section className=" mt-10 space-y-7 p-6">
         <div className=" text-xs items-center  flex justify-between">
-          <div className="  flex  gap-3">
+          <div className=" text-lg flex  gap-3">
             <span>
               Listing price:{" "}
               <span className=" text-red-400">
@@ -46,16 +46,14 @@ const ProdcutViewDetials = ({
             </span>
           </div>
 
-          {user?.sub === "admin" && (
-            <div>
-              <span>
-                Created at:{" "}
-                <span className=" text-muted-foreground">
-                  {product.dateAdded}
-                </span>
+          <div>
+            <span>
+              Created at:{" "}
+              <span className=" text-muted-foreground">
+                {product.dateAdded}
               </span>
-            </div>
-          )}
+            </span>
+          </div>
         </div>
 
         <div className=" space-y-14">

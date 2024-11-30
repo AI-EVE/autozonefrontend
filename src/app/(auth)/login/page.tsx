@@ -20,7 +20,7 @@ import PasswordShowHide from "@/components/password-show-hide";
 import Link from "next/link";
 
 import Image from "next/image";
-import Logo from "../../../../public/autozone-logo.svg";
+import Logo from "../../../../public/IMG_7903-removebg-preview.png";
 
 import { loginUser } from "@/lib/actions/authActions";
 import { useToast } from "@/hooks/use-toast";
@@ -76,7 +76,7 @@ const Page = () => {
   return (
     <div className=" space-y-10  min-w-[97%px] w-[700px] max-w-[700px]">
       <Link href="/">
-        <Image src={Logo} alt="Auto zone logo" className=" w-[200px]" />
+        <Image src={Logo} alt="Auto zone logo" className=" m-auto w-[200px]" />
       </Link>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 ">

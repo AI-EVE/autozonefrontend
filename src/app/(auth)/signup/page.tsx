@@ -18,7 +18,7 @@ import { Input } from "@/components/ui/input";
 import PasswordShowHide from "@/components/password-show-hide";
 import Link from "next/link";
 import Image from "next/image";
-import Logo from "../../../../public/autozone-logo.svg";
+import Logo from "../../../../public/IMG_7903-removebg-preview.png";
 import Spinner from "@/components/Spinner";
 import { useToast } from "@/hooks/use-toast";
 import SuccessToastDescription, {

@@ -3,7 +3,7 @@ import { ModeToggle } from "../theme-switch";
 import UserHeaderBtn from "./user-header-btn";
 
 import { getCurrentUser } from "@/lib/actions/authActions";
-import Logo from "@../public/autozone-logo.svg";
+import Logo from "@../public/IMG_7903-removebg-preview.png";
 import Image from "next/image";
 import NavDrawer from "../nav-drawer";
 
@@ -16,8 +16,14 @@ const Header = async () => {
         <Image
           src={Logo}
           alt="logo"
-          className=" w-[120px] sm:w-[200px]  select-none"
+          width={50}
+          height={50}
+          className="select-none ml-2"
         />
+        <p>
+          <span className="text-red-400">AUTO</span>
+          ZONE
+        </p>
       </div>
       <div className=" flex items-center gap-3">
         <UserHeaderBtn user={user} />
