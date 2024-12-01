@@ -345,7 +345,7 @@ function TableActions({
       const url = window.URL.createObjectURL(blob);
       const a = document.createElement("a");
       a.href = url;
-      a.download = `service_receipt_${service.id}.pdf`;
+      a.download = `${service.car.plateNumber}_${service.id}.pdf`;
       document.body.appendChild(a);
       a.click();
       a.remove();
