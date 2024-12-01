@@ -489,6 +489,8 @@ export interface EditProduct {
   id: number;
   name: string;
   categoryId: number;
+  productTypeId: number;
+  productBrandId: number;
   description: string;
   listPrice: number;
   salePrice: number;

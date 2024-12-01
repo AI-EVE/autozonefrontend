@@ -208,6 +208,8 @@ const ProductForm: React.FC<ProductFormProps> = ({
           id: productToEdit.id,
           name,
           categoryId,
+          productTypeId,
+          productBrandId,
           description,
           listPrice,
           salePrice,
