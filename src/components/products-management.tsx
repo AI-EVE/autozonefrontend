@@ -46,7 +46,7 @@ const ProductManagement = async ({
 
   // if (isError)
   //   return <p>Something went wrong while trying to fetch some data!.</p>;
-
+  console.log("categories", categories);
   return (
     <div
       className={cn(

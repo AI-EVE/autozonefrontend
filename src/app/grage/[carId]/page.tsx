@@ -141,21 +141,6 @@ const Page = async ({
                   {carInfo?.carGeneration.name}
                 </span>
               </div>
-
-              {carInfo && carInfo.carGeneration.notes.length < 300 ? (
-                <div className=" mt-3 flex flex-col sm:flex-row sm:items-center gap-2">
-                  <span className=" mb-auto"> Note: </span>
-                  <p className=" text-muted-foreground break-all">
-                    {carInfo?.carGeneration.notes}
-                  </p>
-                </div>
-              ) : (
-                <NoteDialog
-                  title="Car model note."
-                  content={<p>{carInfo?.carGeneration.notes}</p>}
-                  className=" absolute right-5 top-7"
-                />
-              )}
             </Card>
 
             <Card className="  p-5  text-sm relative">
@@ -169,23 +154,6 @@ const Page = async ({
                   {carInfo?.carMaker.name}
                 </span>
               </div>
-              <div className=" flex items-center mt-3 gap-3">
-                Logo:{" "}
-                {carInfo?.carMaker.logo ? (
-                  <img
-                    src={carInfo.carMaker.logo}
-                    alt="Car logo"
-                    className=" h-10 w-10 object-contain"
-                  />
-                ) : (
-                  <span>Logo</span>
-                )}
-              </div>
-              <NoteDialog
-                title="Car maker note."
-                content={<p>{carInfo?.carMaker.notes}</p>}
-                className=" absolute right-5 top-7"
-              />
             </Card>
 
             <Card className="  p-5  text-sm relative">
@@ -199,21 +167,6 @@ const Page = async ({
                   {carInfo?.carModel.name}
                 </span>
               </div>
-
-              {carInfo && carInfo.carModel.notes.length < 300 ? (
-                <div className=" mt-3 flex  flex-col sm:flex-row sm:items-center gap-2">
-                  Note:{" "}
-                  <p className=" text-muted-foreground break-all">
-                    {carInfo?.carModel.notes}
-                  </p>
-                </div>
-              ) : (
-                <NoteDialog
-                  title="Car model note."
-                  content={<p>{carInfo?.carModel.notes}</p>}
-                  className=" absolute right-5 top-7"
-                />
-              )}
             </Card>
           </div>
         </div>

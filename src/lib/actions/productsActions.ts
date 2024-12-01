@@ -188,12 +188,13 @@ export async function editProductAction({
         method: "PUT",
         headers: {
           Authorization: `Bearer ${token}`,
-          // "Content-Type": "application/json",
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(productToEdit),
       }
     );
 
+    console.log(response);
     if (!response.ok) {
       if (response.status === 409) {
         return { data: null, error: (await response.json()).message };
