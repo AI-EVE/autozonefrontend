@@ -30,23 +30,6 @@ const ProductManagement = async ({
   className?: string;
   useParams?: boolean;
 }) => {
-  // const [categories, carInfos, productBrands, brandTypes] = await Promise.all([
-  //   getAllCategoriesAction(),
-  //   getAllCarsInfoAction(),
-  //   getAllProductBrandsAction(),
-  //   getAllProductTypesAction(),
-  // ]);
-
-  // const { data: categoriesData, error: categoriesError } = categories;
-  // // const { data: carInfosData, error: carInfosError } = carInfos;
-  // const { data: productBrandsData, error: productBrandsError } = productBrands;
-  // const { data: brandTypesData, error: brandTypesError } = brandTypes;
-
-  // const isError = categoriesError || productBrandsError || brandTypesError;
-
-  // if (isError)
-  //   return <p>Something went wrong while trying to fetch some data!.</p>;
-  console.log("categories", categories);
   return (
     <div
       className={cn(

@@ -215,7 +215,6 @@ const ProductForm: React.FC<ProductFormProps> = ({
           isAvailable,
         };
         // Edit the product.
-        console.log(productToEditData);
         const { error } = await editProductAction({
           productToEdit: productToEditData,
           imagesToUpload,

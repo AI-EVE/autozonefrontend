@@ -130,7 +130,7 @@ const Page = async ({
               />
             </Card>
 
-            <Card className="  p-5  text-sm relative">
+            <Card className="flex flex-col justify-center  p-5  text-sm relative">
               <div className=" w-14 h-14 rounded-full  bg-dashboard-green text-dashboard-text-green  flex items-center justify-center mb-3">
                 <VscTypeHierarchySuper size={30} />
               </div>
@@ -154,9 +154,26 @@ const Page = async ({
                   {carInfo?.carMaker.name}
                 </span>
               </div>
+              <div className=" flex items-center mt-3 gap-3">
+                Logo:{" "}
+                {carInfo?.carMaker.logo ? (
+                  <img
+                    src={carInfo.carMaker.logo}
+                    alt="Car logo"
+                    className=" h-10 w-10 object-contain"
+                  />
+                ) : (
+                  <span>Logo</span>
+                )}
+              </div>
+              <NoteDialog
+                title="Car maker note."
+                content={<p>{carInfo?.carMaker.notes}</p>}
+                className=" absolute right-5 top-7"
+              />
             </Card>
 
-            <Card className="  p-5  text-sm relative">
+            <Card className="flex flex-col justify-center p-5  text-sm relative">
               <div className=" w-14 h-14 rounded-full   bg-dashboard-indigo text-dashboard-text-indigo  flex items-center justify-center mb-3">
                 <TbBoxModel2 size={30} />
               </div>
@@ -212,6 +229,7 @@ const Page = async ({
             <CarManagement
               useParams
               carToEdit={car}
+              clientId={client.id}
               carGenerations={carGenerations}
               carMakers={carMakersData}
               className=" sm:flex-col   sm:items-stretch lg:flex-row lg:items-center"

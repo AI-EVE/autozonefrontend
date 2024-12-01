@@ -25,7 +25,6 @@ const ProductItem = async ({
   const viewedImages = data?.length
     ? data.map((image: ProductImage) => image.imageUrl)
     : [];
-  console.log(product.brandName, product.typeName, "dioasodksaodksa");
   return (
     <li className={`${!product.isAvailable && "opacity-50 "}`}>
       <Link

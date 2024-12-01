@@ -36,7 +36,6 @@ export async function getProductsAction({
   //Product?PageNumber=1&PageSize=10
   // /api/Product?Name=test&CategoryId=1&ProductTypeId=1&ProductBrandId=1&IsAvailable=true&PageNumber=1&PageSize=10
   const token = getToken();
-  console.log(token, "token");
 
   if (!token)
     return { data: null, error: "You are not authorized to make this action." };
@@ -194,7 +193,6 @@ export async function editProductAction({
       }
     );
 
-    console.log(response);
     if (!response.ok) {
       if (response.status === 409) {
         return { data: null, error: (await response.json()).message };

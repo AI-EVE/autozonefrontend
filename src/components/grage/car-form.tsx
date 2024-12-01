@@ -88,11 +88,11 @@ const CarForm = ({
 
   const isEditing = edit ? true : false || isOpen;
   const defaultValues = {
-    color: carToEdit?.color || "",
-    plateNumber: carToEdit?.plateNumber || "",
-    chassisNumber: carToEdit?.chassisNumber || "",
-    motorNumber: carToEdit?.motorNumber || "",
-    notes: carToEdit?.notes || "",
+    color: carToEdit?.color || "#d9c814",
+    plateNumber: carToEdit?.plateNumber || "asdasd",
+    chassisNumber: carToEdit?.chassisNumber || "adasda",
+    motorNumber: carToEdit?.motorNumber || "asddss",
+    notes: carToEdit?.notes || "asdasd",
     clientId: clientId || 0,
     carGenerationId: carToEdit?.carInfo.carGeneration.id || 0,
     images: [],
@@ -135,7 +135,6 @@ const CarForm = ({
     setDeletedMedia([]);
   }
 
-  console.log(form.formState.errors, "ASASDAA");
   function handleClose() {
     if (useParams) {
       const params = new URLSearchParams(searchParam);
