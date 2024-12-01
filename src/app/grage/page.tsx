@@ -92,6 +92,13 @@ const Page = async ({ searchParams }: { searchParams: SearchParams }) => {
             carModelId={carModelId}
           />
           <section className=" flex-1 ">
+            <div className=" my-10 px-2">
+              <CarManagement
+                carMakers={carMakersData}
+                carGenerations={carGenerationsData?.carGenerationsData}
+                clients={clientsData}
+              />
+            </div>
             <Suspense
               fallback={<Spinner className=" h-[300px]" size={30} />}
               key={key}
@@ -123,13 +130,7 @@ const Page = async ({ searchParams }: { searchParams: SearchParams }) => {
                 // carGenerationId={carGenerationId}
               />
             )}
-            <div className=" my-10 px-2">
-              <CarManagement
-                carMakers={carMakersData}
-                carGenerations={carGenerationsData?.carGenerationsData}
-                clients={clientsData}
-              />
-            </div>
+
             {/* <ProductPagenation
               name={name}
               categoryId={categoryId}
