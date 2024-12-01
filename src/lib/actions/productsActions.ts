@@ -270,13 +270,13 @@ export async function getProductsCountAction({
 }: GetProdcutsCountActionProps) {
   //Product?PageNumber=1&PageSize=10
 
-  // const token = getToken();
+  const token = getToken();
 
-  // if (!token)
-  //   return {
-  //     data: null,
-  //     error: "You are not authorized to get the products count data.",
-  //   };
+  if (!token)
+    return {
+      data: null,
+      error: "You are not authorized to get the products count data.",
+    };
 
   let query = `${process.env.API_URL}/api/Product/count?&PageSize=${PAGE_SIZE}`;
 
@@ -292,10 +292,10 @@ export async function getProductsCountAction({
 
   const response = await fetch(query, {
     method: "GET",
-    // headers: {
-    //   Authorization: `Bearer ${token}`,
-    //   // "Content-type": "application/json",
-    // },
+    headers: {
+      Authorization: `Bearer ${token}`,
+      // "Content-type": "application/json",
+    },
   });
 
   if (!response.ok) {
