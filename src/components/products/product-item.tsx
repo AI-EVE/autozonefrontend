@@ -74,14 +74,16 @@ const ProductItem = async ({
             {product.description}
           </h2>
 
-          <div className=" flex flex-col gap-2 justify-between  items-center text-xs">
-            <span className="block text-green-500 dark:text-green-600">
-              {formatCurrency(product.salePrice)}
-            </span>
-            <span className="block text-red-500 dark:text-green-600">
-              {formatCurrency(product.listPrice)}
-            </span>
-            <div className=" flex gap-3 items-center">
+          <div className=" flex justify-between   text-xs">
+            <div className="flex flex-col gap-2">
+              <span className=" text-red-500 dark:text-red-500">
+                {formatCurrency(product.listPrice)}
+              </span>
+              <span className=" text-green-500 dark:text-green-600">
+                {formatCurrency(product.salePrice)}
+              </span>
+            </div>
+            <div className=" flex gap-3">
               <span
                 className={cn("text-muted-foreground", {
                   "text-green-500 dark:text-green-600":
