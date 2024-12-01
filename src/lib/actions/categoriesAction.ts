@@ -6,16 +6,16 @@ import { redirect } from "next/navigation";
 
 export async function getAllCategoriesAction() {
   // await new Promise((res) => setTimeout(res, 9000));
-  // const token = getToken();
+  const token = getToken();
 
-  // if (!token)
-  //   return { data: null, error: "You are not authorized to make this action." };
+  if (!token)
+    return { data: null, error: "You are not authorized to make this action." };
   const response = await fetch(`${process.env.API_URL}/api/categories`, {
     method: "GET",
     cache: "no-cache",
-    // headers: {
-    //   Authorization: `Bearer ${token}`,
-    // },
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
   });
 
   if (!response.ok) {
