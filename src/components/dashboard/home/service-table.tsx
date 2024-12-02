@@ -123,6 +123,7 @@ const ServiceTable = ({
           <TableHead>DATE</TableHead>
           <TableHead>CLIENT</TableHead>
           <TableHead>CAR</TableHead>
+          <TableHead>Km</TableHead>
           <TableHead>STATUS</TableHead>
           <TableHead>FEES</TableHead>
           <TableHead className=" whitespace-nowrap">SOLD PRODUCTS</TableHead>
@@ -150,7 +151,7 @@ const ServiceTable = ({
       </TableBody>
       <TableFooter>
         <TableRow>
-          <TableCell colSpan={5}>Total</TableCell>
+          <TableCell colSpan={6}>Total</TableCell>
 
           <TableCell className="   min-w-[100px] max-w-[120px]  break-all">
             {formatCurrency(totalFees)}
@@ -213,6 +214,7 @@ function Row({
         <TableCell>
           <CarDialog service={service} />
         </TableCell>
+        <TableCell>{service.kmCounter}</TableCell>
 
         <TableCell>
           <StatusBadge status={service?.status.name || ""} />

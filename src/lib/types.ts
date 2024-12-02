@@ -263,6 +263,7 @@ export const CreateServiceSchema = z.object({
     .number()
     .min(1, { message: "Service status is required." }),
   note: z.string(),
+  kmCount: z.string(),
   productsToSell: ProductToSellSchema.array(),
   serviceFees: CreateServiceFeeSchema.array(),
   // .min(1, {
@@ -303,6 +304,7 @@ export const EditServiceSchema = z.object({
   clientId: z.number().min(1, { message: "Requried" }),
   carId: z.number().min(1, { message: "Requried" }),
   serviceStatusId: z.number().min(1, { message: "Requried" }),
+  kmCount: z.string(),
   note: z.string(),
 });
 
@@ -635,6 +637,7 @@ export interface Service {
   id: number;
   date: string;
   totalPriceAfterDiscount: number;
+  kmCounter: string;
   client: {
     id: number;
     name: string;

@@ -47,6 +47,7 @@ import { ServiceStatusCombobox } from "@components/service-status-combobox";
 import { editServiceAction } from "@lib/actions/serviceActions";
 import { ClientsComboBox } from "@components/clients-combobox";
 import { CarsComboBox } from "@components/car-combo-box";
+import { Input } from "@components/ui/input";
 
 const EditServiceForm = ({
   clients,
@@ -249,7 +250,26 @@ const EditServiceForm = ({
                 )}
               />
             </div>
-
+            <FormField
+              disabled={isLoading}
+              control={form.control}
+              name={`kmCount`}
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Km Count</FormLabel>
+                  <FormControl>
+                    <Input
+                      type="number"
+                      disabled={isLoading}
+                      placeholder="Kilometers"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormDescription>Enter the kilometers count.</FormDescription>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
             <FormField
               disabled={isLoading}
               control={form.control}

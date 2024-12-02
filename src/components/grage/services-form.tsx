@@ -325,7 +325,28 @@ const ServicesForm = ({
                       )}
                     />
                   </div>
-
+                  <FormField
+                    disabled={isLoading}
+                    control={form.control}
+                    name="kmCount"
+                    render={({ field }) => (
+                      <FormItem className=" w-full mb-auto">
+                        <FormLabel>KM count</FormLabel>
+                        <FormControl>
+                          <Input
+                            type="number"
+                            disabled={isLoading}
+                            placeholder="Kilometers"
+                            {...field}
+                          />
+                        </FormControl>
+                        <FormDescription>
+                          How many kilometers the car has driven.
+                        </FormDescription>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
                   <FormField
                     disabled={isLoading}
                     control={form.control}
