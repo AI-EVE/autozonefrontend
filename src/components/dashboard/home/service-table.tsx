@@ -214,7 +214,7 @@ function Row({
         <TableCell>
           <CarDialog service={service} />
         </TableCell>
-        <TableCell>{service.kmCounter}</TableCell>
+        <TableCell>{service.kmCount}</TableCell>
 
         <TableCell>
           <StatusBadge status={service?.status.name || ""} />

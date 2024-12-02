@@ -59,7 +59,6 @@ export async function getServicesAction({
       tags: ["services"],
     },
   });
-
   if (!response.ok) {
     return {
       data: null,
@@ -68,7 +67,6 @@ export async function getServicesAction({
   }
 
   const data = await response.json();
-
   return { data, error: "" };
 }
 

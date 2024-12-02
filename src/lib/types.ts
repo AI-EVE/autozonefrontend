@@ -637,7 +637,7 @@ export interface Service {
   id: number;
   date: string;
   totalPriceAfterDiscount: number;
-  kmCounter: string;
+  kmCount: string;
   client: {
     id: number;
     name: string;

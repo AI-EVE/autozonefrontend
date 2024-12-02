@@ -32,7 +32,6 @@ const ServiceList = async ({
   minPrice,
   maxPrice,
 }: Props) => {
-  
   const { data, error } = await getServicesAction({
     pageNumber,
     dateFrom,
@@ -43,6 +42,7 @@ const ServiceList = async ({
     minPrice,
     maxPrice,
   });
+  console.log(data);
 
   const [statusData, categoriesData, clientsData, carsData] = await Promise.all(
     [
